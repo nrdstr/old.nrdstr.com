@@ -31,11 +31,11 @@ const TopBar = props => {
             thing.pop()
             let color
             if (page === 'graphics') {
-                color = 'color-1'
+                color = 'color-2'
             } else if (page === 'web') {
-                color = 'color-3'
+                color = 'color-1'
             } else if (page === 'contact') {
-                color = 'color-4'
+                color = 'color-3'
             } else {
                 color = colors[Math.floor(Math.random() * colors.length)]
             }
