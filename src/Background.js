@@ -1,13 +1,16 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
+import { useStateValue } from "./state"
+import { createSequence } from './utils'
 
-const Background = () => {
-    const [shapesData, setShapesData] = useState([])
+
+const Background = props => {
+    const [{ shapesData }, dispatch] = useStateValue()
 
     const numberOfShapes = Math.floor(Math.random() * (window.innerWidth / 30 - 50) + 50)
     const shapes = ['square', 'circle', 'half-circle', 'zig-zag', 'triangle']
     const colors = ['color-1', 'color-2', 'color-3', 'color-4']
 
-    const createSequence = (numb) => Array.from(new Array(numb), (val, index) => index + 1)
+    // const createSequence = (numb) => Array.from(new Array(numb), (val, index) => index + 1)
 
     const initShapes = () => {
         const data = createSequence(numberOfShapes)
@@ -22,7 +25,37 @@ const Background = () => {
                 }
             })
         })
-        setShapesData(shapesArr)
+        dispatch({
+            type: 'shapesData',
+            payload: shapesArr
+        })
+        clearInterval(handleAnimation)
+    }
+
+    const randNum = (min, max) => {
+        let step1 = max - min + 1
+        let step2 = Math.random() * step1
+        let result = Math.floor(step2) + min
+        return result
+    }
+
+    const repositionShapes = () => {
+        const shapesArr = []
+        shapesData.forEach((shape, i) => {
+            shapesArr.push({
+                class: shapesData[i].class,
+                style: {
+                    top: Math.ceil(Math.floor(Math.random() * (window.innerHeight)) / 50) * 50,
+                    left: Math.ceil(Math.floor(Math.random() * (window.innerWidth)) / 50) * 50,
+                    transform: `rotate(${Math.floor(Math.random() * (360))}deg)`
+                }
+            })
+        })
+        dispatch({
+            type: 'shapesData',
+            payload: shapesArr
+        })
+        props.changeColor(colors[randNum(0, colors.length)])
         clearInterval(handleAnimation)
     }
 
@@ -54,7 +87,7 @@ const Background = () => {
                         )
                     })
                 }
-                <button className='btn' onClick={initShapes}>LETS GOOOOO</button>
+                <button className='btn' onClick={repositionShapes}>LETS GOOOOO</button>
             </div>
         )
     } else {

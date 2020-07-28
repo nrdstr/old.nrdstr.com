@@ -4,11 +4,13 @@ import Background from './Background'
 import './App.scss'
 
 function App() {
+  const [logoBorder, setLogoBorder] = useState('color-1')
+  const changeBorderColor = color => setLogoBorder(color)
   return (
     <div className="App">
-      <Background />
+      <Background changeColor={changeBorderColor} />
       <header className="App-header">
-        <Logo />
+        <Logo border={logoBorder} />
       </header>
     </div>
   )
