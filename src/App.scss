@@ -1,13 +1,27 @@
 @import './styles/base';
 
+ul,li {
+  list-style: none;
+}
+
 .App {
   position: relative;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  background-color: $black;
+  overflow: hidden;
   // text-align: center;
 }
 
+.app-inner {
+  max-width: 1200px;
+  width: 100%;
+}
+
 .App-header {
-  background-color: $black;
   min-height: 100vh;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -16,13 +30,35 @@
   color: white;
 }
 
-.logo-container {
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   padding: 30px 50px;
   border: 3px solid $blue;
   background: #151515;
   border-radius: $radius;
+  height: 162px;
+  min-width: 506px;
   z-index: 1;
-  transition: all 0.5s ease-in-out;
+  transition: all 0.466s ease-in-out;
+
+  &__home {
+    height: 162px;
+  }
+
+  &__graphics {
+    height: 300px;
+  }
+
+  &__web {
+    height: 400px;
+  }
+
+  &__contact {
+    height: 200px;
+  }
 }
 
 .logo {
@@ -37,7 +73,9 @@
 
 .background {
   position: fixed;
-  width: 100vw;
+  left: 0;
+  top: 0;
+  width: 100%;
   height: 100vh;
   z-index: 0;
 }
@@ -46,10 +84,12 @@
   position: relative;
   background: $black;
   border: 3px solid $yellow;
-  border-radius: 0 0 5px 0;
   color: white;
+  min-width: 90px;
   font-size: 1rem;
-  padding: 10px;
+  font-family: $font;
+  font-weight: 700;
+  padding: 15px;
   cursor: pointer;
   transition: all 0.2s ease;
   outline: 0;

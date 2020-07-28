@@ -5,6 +5,11 @@ export const rootReducer = (state, action) => {
                 ...state,
                 shapesData: action.payload
             }
+        case "page":
+            return {
+                ...state,
+                page: action.payload
+            }
         case "loading":
             return {
                 ...state,

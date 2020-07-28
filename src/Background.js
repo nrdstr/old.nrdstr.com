@@ -87,7 +87,7 @@ const Background = props => {
                         )
                     })
                 }
-                <button className='btn' onClick={repositionShapes}>LETS GOOOOO</button>
+                {/* <button className='btn' onClick={repositionShapes}>LETS GOOOOO</button> */}
             </div>
         )
     } else {
