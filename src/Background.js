@@ -7,9 +7,7 @@ const Background = () => {
     const shapes = ['square', 'circle', 'half-circle', 'zig-zag', 'triangle']
     const colors = ['color-1', 'color-2', 'color-3', 'color-4']
 
-    const createSequence = (numb) => {
-        return Array.from(new Array(numb), (val, index) => index + 1);
-    }
+    const createSequence = (numb) => Array.from(new Array(numb), (val, index) => index + 1)
 
     const initShapes = () => {
         const data = createSequence(numberOfShapes)
@@ -28,25 +26,15 @@ const Background = () => {
         clearInterval(handleAnimation)
     }
 
-    const changeShapesStyle = () => {
-        const shapesArr = shapesData
-        shapesData.map(shape => {
-            shape.style = {
-                top: Math.ceil(Math.floor(Math.random() * (window.innerHeight)) / 50) * 50,
-                left: Math.ceil(Math.floor(Math.random() * (window.innerWidth)) / 50) * 50,
-                transform: `rotate(${Math.floor(Math.random() * (360))}deg)`
-            }
-        })
-        setShapesData(shapesArr)
-    }
-
     const handleAnimation = () => {
-        const rand = Math.floor(Math.random() * numberOfShapes)
+        const rand = Math.floor(Math.random() * numberOfShapes - 1)
         const el = document.querySelector(`#shape-${rand}`)
-        el.classList.add('animate--jump')
-        setTimeout(() => {
-            el.classList.remove('animate--jump')
-        }, 233)
+        if (el && el.classList) {
+            el.classList.add('animate--jump')
+            setTimeout(() => {
+                el.classList.remove('animate--jump')
+            }, 233)
+        }
     }
 
     useEffect(() => {
@@ -54,7 +42,6 @@ const Background = () => {
         setInterval(handleAnimation, 466)
     }, [])
 
-    console.log(shapesData && shapesData[2])
     if (shapesData) {
         return (
             <div className='background'>
