@@ -1,5 +1,8 @@
+@import './styles/base';
+
 .App {
-  text-align: center;
+  position: relative;
+  // text-align: center;
 }
 
 .App-header {
@@ -16,8 +19,16 @@
 .logo {
   width: 500px;
   fill: white;
+  z-index: 3;
 
   @media (max-width: 768px) {
     width: 250px;
   }
+}
+
+.background {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
 }

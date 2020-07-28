@@ -1,0 +1,86 @@
+$colors: (
+	rgb(194, 108, 210),
+	rgb(30, 195, 196),
+	rgb(254, 254, 81),
+	rgb(241, 123, 165)
+);
+
+$progress: 0;
+@each $color in $colors {
+	$progress: $progress + 1;
+	.color-#{$progress} {
+		border-color: $color !important;
+	}
+}
+
+.shape-container {
+	position: absolute;
+}
+
+.square {
+	width: 50px;
+	height: 50px;
+	border: 3px solid;
+	border-radius: 5px;
+	display: inline-block;
+	position: absolute;
+}
+
+.circle {
+	width: 25px;
+	height: 25px;
+	border-radius: 100%;
+	border: 3px solid;
+	display: inline-block;
+}
+
+.zig-zag {
+	display: inline-block;
+	&:before,
+	&:after{
+		width: 15px;
+		height: 15px;
+		border-left: 3px solid;
+		border-top: 3px solid;
+		border-color: inherit;
+		border-radius: 5px 0 0 0;
+		display: inline-block;
+		content: '';
+		transform: rotate(45deg);
+	}
+	&:after {
+		margin-left: 3px;
+	}
+}
+
+.half-circle {
+	width: 24px;
+    height: 12px; /* as the half of the width */
+    border-top-left-radius: 100px;
+    border-top-right-radius: 100px;
+    border: 4px solid;
+    border-bottom: 0;
+		box-sizing: border-box;
+	display: inline-block;
+}
+
+.triangle {
+	width: 100px;
+	height: 48px;
+	overflow: hidden;
+	border-top: 3px solid;
+	border-radius: 5px 5px 0 0;
+	display: inline-block;
+
+	&:before {
+		content: '';
+		display: block;
+		border-left: 3px solid;
+		border-bottom: 3px solid;
+		border-color: inherit;
+		border-radius: 0 0 0 5px;
+		height: 67px;
+		width: 67px;
+		transform: rotate(-45deg) translateX(50%) translateY(-14px);
+	}
+}
