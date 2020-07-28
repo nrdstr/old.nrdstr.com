@@ -14,7 +14,14 @@ $progress: 0;
 }
 
 .shape-container {
-	position: absolute;
+    position: absolute;
+    transition: all 0.5s ease-in-out;
+}
+
+.shape {
+    transform: scale(1);
+    transform-origin: center;
+    transition: transform 0.233s ease-in-out;
 }
 
 .square {
@@ -23,7 +30,9 @@ $progress: 0;
 	border: 3px solid;
 	border-radius: 5px;
 	display: inline-block;
-	position: absolute;
+    position: absolute;
+    background-color: $black;
+    z-index: 1;
 }
 
 .circle {
@@ -31,7 +40,9 @@ $progress: 0;
 	height: 25px;
 	border-radius: 100%;
 	border: 3px solid;
-	display: inline-block;
+    display: inline-block;
+    background-color: $black;
+    z-index: 1;
 }
 
 .zig-zag {
@@ -47,6 +58,7 @@ $progress: 0;
 		display: inline-block;
 		content: '';
 		transform: rotate(45deg);
+        z-index: 0;
 	}
 	&:after {
 		margin-left: 3px;
@@ -58,10 +70,12 @@ $progress: 0;
     height: 12px; /* as the half of the width */
     border-top-left-radius: 100px;
     border-top-right-radius: 100px;
+    background-color: $black;
     border: 4px solid;
     border-bottom: 0;
 		box-sizing: border-box;
 	display: inline-block;
+    z-index: 0;
 }
 
 .triangle {
@@ -69,11 +83,13 @@ $progress: 0;
 	height: 48px;
 	overflow: hidden;
 	border-top: 3px solid;
-	border-radius: 5px 5px 0 0;
+    border-radius: 5px 5px 0 0;
 	display: inline-block;
+    z-index: 1;
 
 	&:before {
-		content: '';
+        content: '';
+        background-color: $black;
 		display: block;
 		border-left: 3px solid;
 		border-bottom: 3px solid;
@@ -83,4 +99,14 @@ $progress: 0;
 		width: 67px;
 		transform: rotate(-45deg) translateX(50%) translateY(-14px);
 	}
+}
+
+.animate--jump {
+    transform: scale(1.5) !important;
+}
+
+@keyframes jump {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
 }

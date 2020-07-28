@@ -6,7 +6,7 @@
 }
 
 .App-header {
-  background-color: #151515;
+  background-color: $black;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -14,6 +14,14 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+.logo-container {
+  padding: 30px 50px;
+  border: 3px solid $blue;
+  background: #151515;
+  border-radius: 5px;
+  z-index: 1;
 }
 
 .logo {
@@ -31,4 +39,21 @@
   width: 100vw;
   height: 100vh;
   z-index: 0;
+}
+
+.btn {
+  background: $black;
+  border: 3px solid $yellow;
+  border-radius: 0 0 5px 0;
+  color: white;
+  font-size: 1rem;
+  padding: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  outline: 0;
+  z-index: 5;
+
+  &:hover {
+    border-color: $pink;
+  }
 }
