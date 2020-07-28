@@ -3,7 +3,7 @@
 }
 
 .App-header {
-  background-color: #222;
+  background-color: #151515;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -11,4 +11,13 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+.logo {
+  width: 500px;
+  fill: white;
+
+  @media (max-width: 768px) {
+    width: 250px;
+  }
 }
