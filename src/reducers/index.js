@@ -10,6 +10,11 @@ export const rootReducer = (state, action) => {
                 ...state,
                 page: action.payload
             }
+        case "init":
+            return {
+                ...state,
+                init: action.payload
+            }
         case "loading":
             return {
                 ...state,

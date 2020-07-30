@@ -5,6 +5,7 @@ export const StateContext = createContext()
 export const initialState = {
     shapesData: [],
     page: 'home',
+    init: true,
     loading: false
 }
 
