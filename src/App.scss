@@ -4,19 +4,30 @@ ul,li {
   list-style: none;
 }
 
+h1 {
+  color: white;
+  font-family: $font;
+}
+
 .App {
   position: relative;
   display: flex;
   justify-content: center;
-  width: 100%;
+  width: 100vw;
+  height: 100vh;
   background-color: $black;
   overflow: hidden;
   // text-align: center;
 }
 
-.app-inner {
-  max-width: 1200px;
+.app__inner {
+  max-width: 1400px;
   width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .App-header {
@@ -31,40 +42,209 @@ ul,li {
 }
 
 .main {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 30px 50px;
   border: 3px solid $purple;
-  background: #151515;
+  background-color: #151515;
   border-radius: $radius;
-  height: 162px;
-  min-width: 506px;
+  min-height: 312px;
+  box-sizing: border-box;
+  // min-width: 506px;
+  width: 100%;
+  transform: scaleX(.5);
   z-index: 1;
   transition: all 0.466s ease-in-out;
+
+  &__logo {
+    width: 100%;
+    display: flex;
+    border-left-width: 6px;
+    border-right-width: 6px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__socials {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 10px 0;
+    margin-top: 10px;
+    justify-content: center;
+    align-items: center;
+    transform: scaleX(2);
+
+    li {
+      margin: 0 7px;
+
+      .social {
+        width: 40px;
+        fill: white;
+        transition: all 0.2s ease-in-out;
+      }
+
+      &:first-child {
+        .social {
+          &:focus,
+          &:hover {
+            fill: #e1306c;
+          }
+        }
+      }
+
+      &:nth-child(2) {
+        .social {
+          &:focus,
+          &:hover {
+            fill: #1da1f2;
+          }
+        }
+      }
+
+      &:nth-child(3) {
+        .social {
+          &:focus,
+          &:hover {
+            fill: #3b5998;
+          }
+        }
+      }
+
+      &:nth-child(4) {
+        .social {
+          &:focus,
+          &:hover {
+            fill: #ff0000;
+          }
+        }
+      }
+
+      &:nth-child(5) {
+        .social {
+          &:focus,
+          &:hover {
+            fill: #e68523;
+          }
+        }
+      }
+    }
+  }
+
+  &__content {
+    // margin: 100px 0 1em 0;
+    min-height: 100%;
+    max-height: 100%;
+    transform: scaleX(1);
+    background-color: transparentize(#151515, 0.3);
+  }
 
   &__home {
     height: 162px;
   }
+}
 
-  &__graphics {
-    height: 300px;
+.content {
+  margin-top: 100px;
+  // border-top: 3px solid transparent;
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.draw {
+  transition: color 0.25s;
+
+&::before,
+&::after {
+  // Set border to invisible, so we don't see a 4px border on a 0x0 element before the transition starts
+  border: 2px solid transparent;
+  width: 0;
+  height: 0;
+}
+
+// This covers the top & right borders (expands right, then down)
+&::before {
+  top: 0;
+  left: 0;
+}
+
+// And this the bottom & left borders (expands left, then up)
+&::after {
+  bottom: 0;
+  right: 0;
+}
+
+&:hover {
+  color: $pink;
+}
+
+// Hover styles
+&:hover::before,
+&:hover::after {
+  width: 100%;
+  height: 100%;
+}
+
+&:hover::before {
+  border-top-color: $pink; // Make borders visible
+  border-right-color: $pink;
+  transition:
+    width 0.25s ease-out, // Width expands first
+    height 0.25s ease-out 0.25s; // And then height
+}
+
+&:hover::after {
+  border-bottom-color: $pink; // Make borders visible
+  border-left-color: $pink;
+  transition:
+    border-color 0s ease-out 0.5s, // Wait for ::before to finish before showing border
+    width 0.25s ease-out 0.5s, // And then exanding width
+    height 0.25s ease-out 0.75s; // And finally height
+}
+}
+
+.meet {
+
+  &:hover {
+    color: $yellow;
   }
 
-  &__web {
-    height: 400px;
+  // Start ::after in same position as ::before
+  &::after {
+    top: 0;
+    left: 0;
   }
 
-  &__contact {
-    height: 200px;
+  // Change colors
+  &:hover::before {
+    border-top-color: $yellow;
+    border-right-color: $yellow;
   }
+
+  &:hover::after {
+    border-bottom-color: $yellow;
+    border-left-color: $yellow;
+    transition: // Animate height first, then width
+      height 0.25s ease-out,
+      width 0.25s ease-out 0.25s;
+  }
+
+}
+
+.logo-container {
+  width: 100;
+  padding: 10px 0;
 }
 
 .logo {
   width: 500px;
   fill: white;
   z-index: 3;
+  transform: scaleX(2);
 
   @media (max-width: 768px) {
     width: 250px;

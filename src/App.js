@@ -9,12 +9,10 @@ function App() {
   const changeBorderColor = color => setLogoBorder(color)
   return (
     <div className="App">
+      <Background changeColor={changeBorderColor} />
       <div className='app__inner'>
-        <Background changeColor={changeBorderColor} />
         <TopBar changecolor={changeBorderColor} />
-        <header className="App-header">
-          <Main border={logoBorder} />
-        </header>
+        <Main border={logoBorder} />
       </div>
     </div>
   )
