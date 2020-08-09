@@ -5,8 +5,14 @@ ul,li {
 }
 
 h1 {
-  color: white;
+  color: $black;
   font-family: $font;
+  background-color: white;
+  padding: 7px;
+  text-align: center;
+  transform: rotate(3deg);
+  transition: all .2s ease-in-out;
+  min-width: 144px;
 }
 
 .App {
@@ -57,7 +63,14 @@ h1 {
   width: 100%;
   transform: scaleX(.5);
   z-index: 1;
-  transition: all 0.466s ease-in-out;
+  transition: all 0.466s ease-in-out, min-height 0.466s ease-in-out;
+
+  &--init {
+    padding: 0;
+    border-color: transparent !important;
+    min-height: 0;
+    overflow: hidden;
+  }
 
   &__logo {
     width: 100%;
@@ -153,6 +166,9 @@ h1 {
   width: 100%;
   height: 100%;
   display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
 .draw {
@@ -235,6 +251,20 @@ h1 {
 
 }
 
+.home {
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    opacity: 1;
+    transition: all 0.2s ease-in-out;
+  }
+}
+
 .logo-container {
   width: 100;
   padding: 10px 0;
@@ -257,7 +287,9 @@ h1 {
   top: 0;
   width: 100%;
   height: 100vh;
+  opacity: 0;
   z-index: 0;
+  transition: opacity .2s ease-in-out;
 }
 
 .btn {
@@ -277,5 +309,38 @@ h1 {
 
   &:hover {
     border-color: $pink;
+  }
+}
+
+
+.show {
+  opacity: 1;
+}
+
+.hide {
+  opacity: 0;
+}
+
+.remove {
+  display: none;
+}
+
+.bg {
+
+  &--blue {
+    background-color: $blue;
+  }
+
+  &--purple {
+    background-color: $purple;
+  }
+
+  &--yellow {
+    background-color: $yellow;
+    color: $black;
+  }
+
+  &--pink {
+    background-color: $pink;
   }
 }

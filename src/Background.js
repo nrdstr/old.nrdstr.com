@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useRef } from 'react'
 import { useStateValue } from "./state"
 import { createSequence } from './utils'
 
 
 const Background = props => {
     const [{ shapesData, page, init }, dispatch] = useStateValue()
+    const background = useRef(null)
 
     const numberOfShapes = Math.floor(Math.random() * (window.innerWidth / 30 - 50) + 50)
     const shapes = ['square', 'circle', 'half-circle', 'zig-zag', 'triangle']
@@ -39,27 +40,8 @@ const Background = props => {
         return result
     }
 
-    // const repositionShapes = () => {
-    //     const shapesArr = []
-    //     shapesData.forEach((shape, i) => {
-    //         shapesArr.push({
-    //             class: shapesData[i].class,
-    //             style: {
-    //                 top: Math.ceil(Math.floor(Math.random() * (window.innerHeight)) / 50) * 50,
-    //                 left: Math.ceil(Math.floor(Math.random() * (window.innerWidth)) / 50) * 50,
-    //                 transform: `rotate(${Math.floor(Math.random() * (360))}deg)`
-    //             }
-    //         })
-    //     })
-    //     dispatch({
-    //         type: 'shapesData',
-    //         payload: shapesArr
-    //     })
-    //     props.changeColor(colors[randNum(0, colors.length)])
-    //     clearInterval(handleAnimation)
-    // }
-
     const repositionShapes = page => {
+        console.log('ran')
         const shapesArr = []
         const colors = ['color-1', 'color-2', 'color-3', 'color-4']
         shapesData.forEach((shape, i) => {
@@ -70,7 +52,7 @@ const Background = props => {
                 color = 'color-2'
             } else if (page === 'web') {
                 color = 'color-1'
-            } else if (page === 'contact') {
+            } else if (page === 'pricing') {
                 color = 'color-3'
             } else {
                 color = colors[Math.floor(Math.random() * colors.length)]
@@ -105,18 +87,22 @@ const Background = props => {
     useEffect(() => {
         if (init) {
             initShapes()
-            setInterval(handleAnimation, 466)
-            console.log('ran')
+            setTimeout(() => {
+                background.current.style.opacity = 1
+                initShapes()
+                setInterval(handleAnimation, 466)
+            }, 700)
         }
         if (page === 'home' && !init) repositionShapes('home')
         if (page === 'graphics') repositionShapes('graphics')
         if (page === 'web') repositionShapes('web')
-        if (page === 'contact') repositionShapes('contact')
+        if (page === 'pricing') repositionShapes('pricing')
     }, [init, page])
 
     if (shapesData) {
+        console.log(shapesData)
         return (
-            <div className='background'>
+            <div ref={background} className='background'>
                 {
                     shapesData && shapesData.map((shape, i) => {
                         return (
@@ -126,7 +112,6 @@ const Background = props => {
                         )
                     })
                 }
-                {/* <button className='btn' onClick={repositionShapes}>LETS GOOOOO</button> */}
             </div>
         )
     } else {

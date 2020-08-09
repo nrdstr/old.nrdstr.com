@@ -2,15 +2,29 @@ import React, { useEffect, useRef } from 'react'
 import { useStateValue } from './state'
 
 const TopBar = props => {
-    const [{ page, init }, dispatch] = useStateValue()
+    const [{ page, init, toggle }, dispatch] = useStateValue()
     const logo = useRef(null)
+    const nav = useRef(null)
 
     const handleNav = page => {
         if (init) dispatch({ type: 'init', payload: false })
-        dispatch({ type: 'page', payload: page })
+        if (!init && page === 'home') {
+            dispatch({ type: 'toggle', payload: { ...toggle, home: true } })
+            setTimeout(() => {
+                dispatch({ type: 'page', payload: page })
+            }, 200)
+        } else {
+            dispatch({ type: 'toggle', payload: { ...toggle, home: false } })
+            dispatch({ type: 'page', payload: page })
+        }
     }
 
     useEffect(() => {
+        if (init) {
+            setTimeout(() => {
+                nav.current.style.opacity = 1
+            }, 700)
+        }
         if (page !== 'home') {
             setTimeout(() => {
                 logo.current.style.opacity = 1
@@ -21,7 +35,7 @@ const TopBar = props => {
     }, [page])
 
     return (
-        <nav className='topbar'>
+        <nav ref={nav} className='topbar'>
             <div className='topbar__inner'>
                 <div className='topbar__logo-container'>
                     <svg id="nrdstr" ref={logo} className='topbar__logo' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1794 1254.07">
@@ -46,7 +60,7 @@ const TopBar = props => {
                         <button onClick={() => handleNav('web')} className='btn color-3'><span>web</span></button>
                     </li>
                     <li>
-                        <button onClick={() => handleNav('contact')} className='btn color-4'><span>contact</span></button>
+                        <button onClick={() => handleNav('pricing')} className='btn color-4'><span>pricing</span></button>
                     </li>
                 </ul>
             </div>

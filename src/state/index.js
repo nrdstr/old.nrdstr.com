@@ -6,7 +6,11 @@ export const initialState = {
     shapesData: [],
     page: 'home',
     init: true,
-    loading: false
+    loading: false,
+    toggle: {
+        home: false,
+        main: false
+    }
 }
 
 export const StateProvider = ({ reducer, initialState, children }) => (

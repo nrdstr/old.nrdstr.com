@@ -20,6 +20,11 @@ export const rootReducer = (state, action) => {
                 ...state,
                 drafts: action.payload
             }
+        case "toggle":
+            return {
+                ...state,
+                toggle: action.payload
+            }
         default:
             return state
     }
