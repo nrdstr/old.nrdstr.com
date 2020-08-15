@@ -41,7 +41,6 @@ const Background = props => {
     }
 
     const repositionShapes = page => {
-        console.log('ran')
         const shapesArr = []
         const colors = ['color-1', 'color-2', 'color-3', 'color-4']
         shapesData.forEach((shape, i) => {
@@ -100,7 +99,6 @@ const Background = props => {
     }, [init, page])
 
     if (shapesData) {
-        console.log(shapesData)
         return (
             <div ref={background} className='background'>
                 {

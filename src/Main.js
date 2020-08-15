@@ -3,13 +3,13 @@ import { useStateValue } from './state'
 import { Instagram, Twitter, Youtube, Linkedin, Facebook } from './icons/icons'
 
 const Main = props => {
-    const [{ page, init, toggle }, dispatch] = useStateValue()
+    const [{ page, init }] = useStateValue()
     const [initAnimation, setInitAnimation] = useState('main--init')
-    const [showLogo, setShowLogo] = useState(false)
+    const [showContent, setShowContent] = useState('hide')
+    const [contentStyles, setContentStyles] = useState({ opacity: 0, display: 'none' })
     const main = useRef(null)
     const home = useRef(null)
-
-    const toggleHome = show => home.current.style.opacity = show ? 1 : 0
+    const content = useRef(null)
 
     useEffect(() => {
         if (init) {
@@ -22,10 +22,22 @@ const Main = props => {
         }
 
         if (!init && page === 'home') {
+            setContentStyles({ opacity: 0 })
             setTimeout(() => {
                 home.current.classList.remove('remove')
                 home.current.classList.remove('hide')
             }, 400)
+        }
+
+        if (page !== 'home') {
+            if (content) {
+                setTimeout(() => {
+                    setShowContent('')
+                    setContentStyles({ opacity: 1, display: 'flex' })
+                }, 466)
+            }
+        } else {
+            setContentStyles({ opacity: 0 })
         }
 
 
@@ -75,7 +87,7 @@ const Main = props => {
     } else if (page === 'graphics') {
         return (
             <main className={`main main__content color-1}`}>
-                <div className='content color-2'>
+                <div style={contentStyles} ref={content} className={`content color-2`}>
                     <h1 className='bg--blue'>graphics</h1>
                 </div>
             </main>
@@ -83,7 +95,7 @@ const Main = props => {
     } else if (page === 'web') {
         return (
             <main className={`main main__content color-3`}>
-                <div className='content color-1'>
+                <div style={contentStyles} ref={content} className={`content color-1`}>
                     <h1 className='bg--purple'>web</h1>
                 </div>
             </main>
@@ -91,7 +103,7 @@ const Main = props => {
     } else if (page === 'pricing') {
         return (
             <main className={`main main__content color-4`}>
-                <div className='content color-3'>
+                <div style={contentStyles} ref={content} className={`content color-3`}>
                     <h1 className='bg--yellow'>pricing</h1>
                 </div>
             </main>
