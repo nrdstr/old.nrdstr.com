@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react'
 import { createSequence } from '../utils'
 import { useStateValue } from "../state"
 
-const Background = props => {
+const Background = () => {
     const [{ shapesData, page, init }, dispatch] = useStateValue()
     const background = useRef(null)
     const numberOfShapes = Math.floor(Math.random() * (window.innerWidth / 30 - 50) + 50)
@@ -33,8 +33,8 @@ const Background = props => {
         const shapesArr = []
         const colors = ['color-1', 'color-2', 'color-3', 'color-4']
         shapesData.forEach((shape, i) => {
-            let thing = (shapesData[i].class).trim().split(' ')
-            thing.pop()
+            let shapeClass = (shapesData[i].class).trim().split(' ')
+            shapeClass.pop()
             let color
             if (page === 'media') {
                 color = 'color-2'
@@ -47,7 +47,7 @@ const Background = props => {
             }
 
             shapesArr.push({
-                class: `${thing.join(' ')} ${color}`,
+                class: `${shapeClass.join(' ')} ${color}`,
                 style: {
                     top: Math.ceil(Math.floor(Math.random() * (window.innerHeight)) / 50) * 50,
                     left: Math.ceil(Math.floor(Math.random() * (window.innerWidth)) / 50) * 50,
@@ -93,7 +93,7 @@ const Background = props => {
                 {
                     shapesData && shapesData.map((shape, i) => {
                         return (
-                            <div key={i} className='shape-container' style={shape.style}>
+                            <div key={i} className='shape__container' style={shape.style}>
                                 <div id={`shape-${i}`} className={shape.class} />
                             </div>
                         )

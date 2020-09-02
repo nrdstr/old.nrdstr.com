@@ -1,13 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { Instagram, Twitter, Youtube, Linkedin, Facebook } from './icons/icons'
 import { useStateValue } from './state'
 import Logo from './components/Logo'
+import Socials from './components/Socials'
 
-const Main = props => {
+const Main = () => {
     const [{ page, init }] = useStateValue()
     const [contentStyles, setContentStyles] = useState({ opacity: 0, display: 'none' })
     const [initAnimation, setInitAnimation] = useState('main--init')
-    const [showContent, setShowContent] = useState('hide')
     const content = useRef(null)
     const main = useRef(null)
     const home = useRef(null)
@@ -33,7 +32,6 @@ const Main = props => {
         if (page !== 'home') {
             if (content) {
                 setTimeout(() => {
-                    setShowContent('')
                     setContentStyles({ display: 'flex', opacity: 1 })
                 }, 466)
             }
@@ -46,16 +44,8 @@ const Main = props => {
         return (
             <main ref={main} className={`main main__logo ${initAnimation} color-2`}>
                 <div ref={home} className={`home hide remove`}>
-                    <div className='logo-container'>
-                        <Logo />
-                    </div>
-                    <ul className='main__socials'>
-                        <li><a href='#'><Instagram /></a></li>
-                        <li><a href='#'><Twitter /></a></li>
-                        <li><a href='#'><Facebook /></a></li>
-                        <li><a href='#'><Youtube /></a></li>
-                        <li><a href='#'><Linkedin /></a></li>
-                    </ul>
+                    <Logo />
+                    <Socials />
                 </div>
             </main>
         )
