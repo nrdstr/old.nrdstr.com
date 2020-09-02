@@ -1,0 +1,22 @@
+.home {
+    @include flex(column, center, center);
+    height: 100%;
+    opacity: 1;
+    transition: all 0.2s ease-in-out;
+}
+
+.logo-container {
+  width: 100%;
+  padding: 10px 0;
+}
+
+.logo {
+  width: 500px;
+  fill: white;
+  z-index: 3;
+  transform: scaleX(2);
+
+  @media (max-width: 768px) {
+    width: 250px;
+  }
+}

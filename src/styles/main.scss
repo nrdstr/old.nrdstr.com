@@ -1,0 +1,112 @@
+.main {
+    position: relative;
+    @include flex(column, center, center);
+    padding: 30px 50px;
+    border: 3px solid $purple;
+    background-color: #151515;
+    border-radius: $radius;
+    min-height: 312px;
+    box-sizing: border-box;
+    width: 100%;
+    transform: scaleX(.5);
+    z-index: 1;
+    transition: all 0.466s ease-in-out, min-height 0.466s ease-in-out;
+
+    &--init {
+      padding: 0;
+      border-color: transparent !important;
+      min-height: 0;
+      overflow: hidden;
+    }
+
+    &__logo {
+      @include flex(row, center, center);
+      width: 100%;
+      border-left-width: 6px;
+      border-right-width: 6px;
+    }
+
+    &__socials {
+      @include flex(row, center, center);
+      margin: 0;
+      margin-top: 10px;
+      padding: 10px 0;
+      list-style: none;
+      transform: scaleX(2);
+
+      li {
+        margin: 0 7px;
+
+        .social {
+          width: 40px;
+          fill: white;
+          transition: all 0.2s ease-in-out;
+        }
+
+        &:first-child {
+          .social {
+            &:focus,
+            &:hover {
+              fill: #e1306c;
+            }
+          }
+        }
+
+        &:nth-child(2) {
+          .social {
+            &:focus,
+            &:hover {
+              fill: #1da1f2;
+            }
+          }
+        }
+
+        &:nth-child(3) {
+          .social {
+            &:focus,
+            &:hover {
+              fill: #3b5998;
+            }
+          }
+        }
+
+        &:nth-child(4) {
+          .social {
+            &:focus,
+            &:hover {
+              fill: #ff0000;
+            }
+          }
+        }
+
+        &:nth-child(5) {
+          .social {
+            &:focus,
+            &:hover {
+              fill: #e68523;
+            }
+          }
+        }
+      }
+    }
+
+    &__content {
+      min-height: 100%;
+      max-height: 100%;
+      transform: scaleX(1);
+      background-color: transparentize(#151515, 0.3);
+    }
+
+    &__home {
+      height: 162px;
+    }
+  }
+
+
+  .content {
+    @include flex(column, flex-start, flex-start);
+    @include size(100%, 100%);
+    margin-top: 100px;
+    opacity: 0;
+    transition: all 0.2s ease-in-out;
+  }

@@ -1,3 +1,9 @@
-@import './variables';
+@import './shared/variables';
+@import './shared/mixins';
+@import './background';
 @import './shapes';
 @import './topbar';
+@import './navlinks';
+@import './navlogo';
+@import './main';
+@import './home';

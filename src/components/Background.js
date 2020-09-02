@@ -1,17 +1,13 @@
 import React, { useEffect, useRef } from 'react'
-import { useStateValue } from "./state"
-import { createSequence } from './utils'
-
+import { createSequence } from '../utils'
+import { useStateValue } from "../state"
 
 const Background = props => {
     const [{ shapesData, page, init }, dispatch] = useStateValue()
     const background = useRef(null)
-
     const numberOfShapes = Math.floor(Math.random() * (window.innerWidth / 30 - 50) + 50)
     const shapes = ['square', 'circle', 'half-circle', 'zig-zag', 'triangle']
     const colors = ['color-1', 'color-2', 'color-3', 'color-4']
-
-    // const createSequence = (numb) => Array.from(new Array(numb), (val, index) => index + 1)
 
     const initShapes = () => {
         const data = createSequence(numberOfShapes)
@@ -33,13 +29,6 @@ const Background = props => {
         clearInterval(handleAnimation)
     }
 
-    const randNum = (min, max) => {
-        let step1 = max - min + 1
-        let step2 = Math.random() * step1
-        let result = Math.floor(step2) + min
-        return result
-    }
-
     const repositionShapes = page => {
         const shapesArr = []
         const colors = ['color-1', 'color-2', 'color-3', 'color-4']
@@ -47,7 +36,7 @@ const Background = props => {
             let thing = (shapesData[i].class).trim().split(' ')
             thing.pop()
             let color
-            if (page === 'graphics') {
+            if (page === 'media') {
                 color = 'color-2'
             } else if (page === 'web') {
                 color = 'color-1'
@@ -93,7 +82,7 @@ const Background = props => {
             }, 700)
         }
         if (page === 'home' && !init) repositionShapes('home')
-        if (page === 'graphics') repositionShapes('graphics')
+        if (page === 'media') repositionShapes('media')
         if (page === 'web') repositionShapes('web')
         if (page === 'pricing') repositionShapes('pricing')
     }, [init, page])
