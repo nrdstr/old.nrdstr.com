@@ -65,11 +65,19 @@ const Main = () => {
                 </div>
             </main>
         )
-    } else if (page === 'pricing') {
+    } else if (page === 'music') {
         return (
             <main className={`main main__content color-4`}>
                 <div style={contentStyles} ref={content} className={`content color-3`}>
-                    <h1 className='bg--yellow'>pricing</h1>
+                    <h1 className='bg--yellow'>music</h1>
+                </div>
+            </main>
+        )
+    } else if (page === 'pricing') {
+        return (
+            <main className={`main main__content color-2`}>
+                <div style={contentStyles} ref={content} className={`content color-3`}>
+                    <h1 className='bg--pink'>pricing</h1>
                 </div>
             </main>
         )

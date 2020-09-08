@@ -41,6 +41,8 @@ const Background = () => {
             } else if (page === 'web') {
                 color = 'color-1'
             } else if (page === 'pricing') {
+                color = 'color-4'
+            } else if (page === 'music') {
                 color = 'color-3'
             } else {
                 color = colors[Math.floor(Math.random() * colors.length)]
@@ -84,6 +86,7 @@ const Background = () => {
         if (page === 'home' && !init) repositionShapes('home')
         if (page === 'media') repositionShapes('media')
         if (page === 'web') repositionShapes('web')
+        if (page === 'music') repositionShapes('music')
         if (page === 'pricing') repositionShapes('pricing')
     }, [init, page])
 
