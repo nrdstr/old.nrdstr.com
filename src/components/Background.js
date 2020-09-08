@@ -78,7 +78,7 @@ const Background = () => {
             setTimeout(() => {
                 background.current.style.opacity = 1
                 initShapes()
-                setInterval(handleAnimation, 466)
+                // setInterval(handleAnimation, 466)
             }, 700)
         }
         if (page === 'home' && !init) repositionShapes('home')

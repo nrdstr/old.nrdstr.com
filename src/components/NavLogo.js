@@ -18,12 +18,10 @@ const NavLogo = props => {
     return (
         <div className='nav-logo__container'>
             <svg onClick={() => props.handleNav('home')} id="nrdstr" ref={logo} className='nav-logo' xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1794 1254.07">
-                <g id="big_n" data-name="big n">
-                    <g id="_." data-name=".">
-                        <path className="cls-1" d="M1548.51,1626.08V1255.24H1897v370.84Z" transform="translate(-103 -372.97)" />
-                    </g>
-                    <g id="n">
-                        <path className="cls-1" d="M448.36,514.51C544.61,429.58,672,373,796.55,373c328.38,0,597.31,288.75,597.31,648.26V1627H1048.5v-605.8c0-175.51-205.91-331.2-316.6-331.2-169.84,0-272.21,155.69-272.21,331.2V1627H103V406.94H391.74Z" transform="translate(-103 -372.97)" />
+                <g id="n_logo" dataname="n logo">
+                    <path d="M460,977c0-162.37,131.63-294,294-294s294,131.63,294,294l.5,44.23V1627h345.36v-605.8c0-359.51-268.93-648.26-597.31-648.26C672,373,544.61,429.58,448.36,514.51L391.74,406.94H103V1627H459.69v-605.8Z" transform="translate(-103 -372.97)" />
+                    <g id="_." dataname=".">
+                        <path d="M1548.51,1626.08V1255.24H1897v370.84Z" transform="translate(-103 -372.97)" />
                     </g>
                 </g>
             </svg>
