@@ -7,9 +7,39 @@
 }
 
 .nav-logo {
-    height: 40px;
-    fill: white;
+    @include flex(column, center, center);
+    @include size(60px, 60px);
+    position: relative;
     opacity: 0;
     cursor: pointer;
-    transition: 0.175s ease-in-out;
+    transition: opacity 0.175s ease-in-out, transform 0.2s ease;
+    transform-style: preserve-3d;
+
+    &::before {
+        position: absolute;
+        top: 0;
+        left: 0;
+        content: '';
+        @include size(100%, 100%);
+        background: url('/icons/n-logo.svg') no-repeat center;
+        background-size: contain;
+        transform: translateZ(30px);
+    }
+
+    &::after {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        content: '';
+        @include size(100%, 100%);
+        background: url('/icons/close.svg') no-repeat center;
+        background-size: 75%;
+        transform: rotateX(-90deg) translateZ(-30px);
+    }
+
+    &:focus,
+    &:hover,
+    &:active {
+        transform: rotateX(90deg);
+    }
 }

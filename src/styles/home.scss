@@ -1,11 +1,13 @@
 .home {
     @include flex(column, center, center);
     height: 100%;
+    width: 100%;
     opacity: 1;
     transition: all 0.2s ease-in-out;
 }
 
 .logo__container {
+  @include flex(row, center, center);
   width: 100%;
   padding: 10px 0;
 }
