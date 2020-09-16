@@ -2,6 +2,8 @@ import React, { useState, useEffect, useRef } from 'react'
 import { useStateValue } from './state'
 import Logo from './components/Logo'
 import Socials from './components/Socials'
+import Grid from './components/Grid'
+import GridNav from './components/GridNav'
 
 const Main = () => {
     const [{ page, init }] = useStateValue()
@@ -10,6 +12,100 @@ const Main = () => {
     const content = useRef(null)
     const main = useRef(null)
     const home = useRef(null)
+
+    //
+
+    const data = {
+        media: {
+            logos: [
+                {
+                    url: 'https://via.placeholder.com/432'
+                },
+                {
+                    url: 'https://via.placeholder.com/432'
+                },
+                {
+                    url: 'https://via.placeholder.com/432'
+                },
+                {
+                    url: 'https://via.placeholder.com/432'
+                },
+                {
+                    url: 'https://via.placeholder.com/432'
+                },
+                {
+                    url: 'https://via.placeholder.com/432'
+                },
+                {
+                    url: 'https://via.placeholder.com/432'
+                },
+                {
+                    url: 'https://via.placeholder.com/432'
+                },
+                {
+                    url: 'https://via.placeholder.com/432'
+                }
+            ],
+            graphics: [
+                {
+                    url: 'https://via.placeholder.com/431'
+                },
+                {
+                    url: 'https://via.placeholder.com/431'
+                },
+                {
+                    url: 'https://via.placeholder.com/431'
+                },
+                {
+                    url: 'https://via.placeholder.com/432'
+                },
+                {
+                    url: 'https://via.placeholder.com/432'
+                },
+                {
+                    url: 'https://via.placeholder.com/432'
+                },
+                {
+                    url: 'https://via.placeholder.com/432'
+                },
+                {
+                    url: 'https://via.placeholder.com/432'
+                },
+                {
+                    url: 'https://via.placeholder.com/432'
+                }
+            ],
+            instagram: [
+                {
+                    url: 'https://via.placeholder.com/430'
+                },
+                {
+                    url: 'https://via.placeholder.com/430'
+                },
+                {
+                    url: 'https://via.placeholder.com/430'
+                },
+                {
+                    url: 'https://via.placeholder.com/432'
+                },
+                {
+                    url: 'https://via.placeholder.com/432'
+                },
+                {
+                    url: 'https://via.placeholder.com/432'
+                },
+                {
+                    url: 'https://via.placeholder.com/432'
+                },
+                {
+                    url: 'https://via.placeholder.com/432'
+                },
+                {
+                    url: 'https://via.placeholder.com/432'
+                }
+            ]
+        }
+    }
 
     useEffect(() => {
         if (init) {
@@ -54,6 +150,8 @@ const Main = () => {
             <main className={`main main__content color-1}`}>
                 <div style={contentStyles} ref={content} className={`content color-2`}>
                     <h1 className='bg--blue'>media</h1>
+                    <GridNav type={'media'} tabs={['logos', 'graphics', 'instagram']} />
+                    <Grid type={'media'} data={data.media} />
                 </div>
             </main>
         )
@@ -73,11 +171,11 @@ const Main = () => {
                 </div>
             </main>
         )
-    } else if (page === 'pricing') {
+    } else if (page === 'contact') {
         return (
             <main className={`main main__content color-2`}>
                 <div style={contentStyles} ref={content} className={`content color-3`}>
-                    <h1 className='bg--pink'>pricing</h1>
+                    <h1 className='bg--pink'>contact</h1>
                 </div>
             </main>
         )

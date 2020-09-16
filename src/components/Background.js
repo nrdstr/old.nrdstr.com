@@ -40,7 +40,7 @@ const Background = () => {
                 color = 'color-2'
             } else if (page === 'web') {
                 color = 'color-1'
-            } else if (page === 'pricing') {
+            } else if (page === 'contact') {
                 color = 'color-4'
             } else if (page === 'music') {
                 color = 'color-3'
@@ -87,7 +87,7 @@ const Background = () => {
         if (page === 'media') repositionShapes('media')
         if (page === 'web') repositionShapes('web')
         if (page === 'music') repositionShapes('music')
-        if (page === 'pricing') repositionShapes('pricing')
+        if (page === 'contact') repositionShapes('contact')
     }, [init, page])
 
     if (shapesData) {

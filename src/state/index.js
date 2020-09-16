@@ -9,7 +9,10 @@ export const initialState = {
     loading: false,
     toggle: {
         home: false,
-        main: false
+        main: false,
+        media: {
+            current: 'logos'
+        }
     }
 }
 

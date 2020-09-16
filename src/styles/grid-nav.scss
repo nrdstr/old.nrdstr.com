@@ -1,0 +1,37 @@
+.grid-nav {
+    @include flex(row, center, center);
+    margin: 0 0 20px 0;
+
+    &__btn {
+        background: transparent;
+        color: white;
+        font-family: $font;
+        font-size: 1rem;
+        font-weight: bold;
+        outline: none;
+        padding: 0 10px;
+        border: 0;
+        cursor: pointer;
+        border-right: 3px solid $purple;
+        transition: all 0.2s ease;
+
+        &:focus,
+        &:focus-within,
+        &:hover,
+        &:active {
+            color: $blue;
+        }
+
+        &:first-child {
+            padding-left: 0;
+        }
+
+        &:last-child{
+            border: 0;
+        }
+
+        &--active {
+            color: $blue;
+        }
+    }
+}

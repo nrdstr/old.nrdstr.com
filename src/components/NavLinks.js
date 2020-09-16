@@ -13,7 +13,7 @@ const NavLinks = props => {
                 <button onClick={() => props.handleNav('music')} className='btn color-3'><span>music</span></button>
             </li>
             <li>
-                <button onClick={() => props.handleNav('pricing')} className='btn color-4'><span>pricing</span></button>
+                <button onClick={() => props.handleNav('contact')} className='btn color-4'><span>contact</span></button>
             </li>
         </ul>
     )
