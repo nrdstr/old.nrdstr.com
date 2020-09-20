@@ -1,4 +1,4 @@
 .grid-item {
-    @include flex(column, center, center);
+    @include flex(column, flex-start, center);
     width: 100%;
 }

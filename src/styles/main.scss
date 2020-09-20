@@ -1,7 +1,7 @@
 .main {
     position: relative;
-    @include flex(column, center, center);
-    padding: 30px 50px;
+    @include flex(column, flex-start, center);
+    padding: 30px 20px;
     border: 3px solid $purple;
     background-color: #151515;
     border-radius: $radius;
@@ -23,6 +23,7 @@
     &__logo {
       @include flex(row, center, center);
       width: 100%;
+      min-width: 1200px;
       border-left-width: 6px;
       border-right-width: 6px;
     }
@@ -44,7 +45,7 @@
   .content {
     @include flex(column, flex-start, flex-start);
     @include size(100%, 100%);
-    margin-top: 100px;
+    margin-top: 60px;
     opacity: 0;
     transition: all 0.2s ease-in-out;
   }

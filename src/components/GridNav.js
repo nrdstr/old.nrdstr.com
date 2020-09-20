@@ -1,15 +1,17 @@
 import React from 'react'
 import { useStateValue } from '../state/'
+import { withRouter } from 'react-router-dom'
 
 const GridNav = props => {
-    const [{ toggle }, dispatch] = useStateValue()
+    const [{ toggle, page }, dispatch] = useStateValue()
 
     const handleGridNav = type => {
+        props.history.push(`/${page}/${type}`)
         dispatch({
             type: 'toggle',
             payload: {
                 ...toggle,
-                [props.type]: {
+                [page]: {
                     current: type
                 }
             }
@@ -33,4 +35,4 @@ const GridNav = props => {
     )
 }
 
-export default GridNav
+export default withRouter(GridNav)

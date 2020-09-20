@@ -1,0 +1,53 @@
+.modal {
+    position: fixed;
+    top: 0;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    @include size(100%, 100%);
+    background-color: $black;
+    transition: all 0.2s ease-in-out;
+    z-index: 9001;
+
+    &__top-bar {
+        position: absolute;
+        top: 0;
+        padding: 0 20px;
+        box-sizing: border-box;
+        @include size(100%, 100px);
+        @include flex(row, flex-end, center);
+        z-index: 20;
+    }
+
+    &__close {
+        @include size(60px, 60px);
+        background: url('/icons/close.svg') no-repeat center;
+        background-size: contain;
+    }
+
+    &__image-container {
+        @include flex(row, center, center);
+        height: calc(100% - 100px);
+        margin-top: 50px;
+    }
+
+    &__image {
+        // height: calc(100% - 100px);
+        // margin-top: 50px;
+        height: 100%;
+        z-index: 10;
+    }
+
+    .lazy-load-image-background {
+    }
+
+    span {
+        display: flex !important;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        // width: 100%;
+    }
+}

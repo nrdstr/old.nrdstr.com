@@ -4,15 +4,32 @@ export const StateContext = createContext()
 
 export const initialState = {
     shapesData: [],
+    data: {
+        media: {
+            logos: [],
+            graphics: [],
+            videos: []
+        },
+        web: [],
+        music: []
+    },
     page: 'home',
+    subpage: '',
     init: true,
     loading: false,
+
     toggle: {
         home: false,
         main: false,
         media: {
             current: 'logos'
-        }
+        },
+        modal: {
+            toggled: false,
+            index: null,
+            id: '',
+            type: ''
+        },
     }
 }
 

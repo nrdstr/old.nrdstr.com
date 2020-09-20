@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Main from './Main'
 import Background from './components/Background'
 import TopBar from './components/TopBar'
@@ -10,10 +11,14 @@ function App() {
   return (
     <div className="app">
       <Background changeColor={changeBorderColor} />
-      <div className='app__inner'>
-        <TopBar changecolor={changeBorderColor} />
-        <Main border={logoBorder} />
-      </div>
+      <Router>
+        <div className='app__inner'>
+          <TopBar changecolor={changeBorderColor} />
+          <Main border={logoBorder} />
+          {/* <Route exact path='/' component={() => <Main border={logoBorder} />} /> */}
+          {/* <Route path='/:slug' component={() => <Main border={logoBorder} />} /> */}
+        </div>
+      </Router>
     </div>
   )
 }

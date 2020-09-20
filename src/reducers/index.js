@@ -5,10 +5,20 @@ export const rootReducer = (state, action) => {
                 ...state,
                 shapesData: action.payload
             }
+        case "data":
+            return {
+                ...state,
+                data: action.payload
+            }
         case "page":
             return {
                 ...state,
                 page: action.payload
+            }
+        case "subpage":
+            return {
+                ...state,
+                subpage: action.payload
             }
         case "init":
             return {
