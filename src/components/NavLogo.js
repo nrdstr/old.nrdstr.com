@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react'
 import { useStateValue } from '../state'
 
 const NavLogo = props => {
-    const [{ page, toggle }] = useStateValue()
+    const [{ page }] = useStateValue()
     const logo = useRef(null)
 
     useEffect(() => {
@@ -14,7 +14,7 @@ const NavLogo = props => {
         } else {
             logo.current.style.opacity = 0
         }
-    }, [page, toggle.modal])
+    }, [page])
 
     return (
         <div className='nav-logo__container'>

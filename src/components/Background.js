@@ -3,7 +3,7 @@ import { createSequence } from '../utils'
 import { useStateValue } from "../state"
 
 const Background = () => {
-    const [{ shapesData, page, init }, dispatch] = useStateValue()
+    const [{ shapesData, page, init, loading }, dispatch] = useStateValue()
     const background = useRef(null)
     const numberOfShapes = Math.floor(Math.random() * (window.innerWidth / 30 - 50) + 50)
     const shapes = ['square', 'circle', 'half-circle', 'zig-zag', 'triangle']
@@ -75,20 +75,22 @@ const Background = () => {
     }
 
     useEffect(() => {
-        if (init) {
-            initShapes()
-            setTimeout(() => {
-                background.current.style.opacity = 1
+        if (!loading) {
+            if (init) {
                 initShapes()
-                // setInterval(handleAnimation, 466)
-            }, 700)
+                setTimeout(() => {
+                    background.current.style.opacity = 1
+                    initShapes()
+                    // setInterval(handleAnimation, 466)
+                }, 400)
+            }
+            if (page === 'home' && !init) repositionShapes('home')
+            if (page === 'media') repositionShapes('media')
+            if (page === 'web') repositionShapes('web')
+            if (page === 'music') repositionShapes('music')
+            if (page === 'contact') repositionShapes('contact')
         }
-        if (page === 'home' && !init) repositionShapes('home')
-        if (page === 'media') repositionShapes('media')
-        if (page === 'web') repositionShapes('web')
-        if (page === 'music') repositionShapes('music')
-        if (page === 'contact') repositionShapes('contact')
-    }, [init, page])
+    }, [init, page, loading])
 
     if (shapesData) {
         return (
@@ -105,7 +107,7 @@ const Background = () => {
             </div>
         )
     } else {
-        return 'LOADING...'
+        return ''
     }
 }
 

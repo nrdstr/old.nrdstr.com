@@ -6,8 +6,6 @@ const Grid = props => {
     const [{ toggle }] = useStateValue()
     const currentTab = toggle[props.type].current
 
-    console.log(toggle)
-
     if (props.data[currentTab]) {
         return (
             <div className='grid'>
@@ -15,7 +13,7 @@ const Grid = props => {
             </div>
         )
     } else {
-        return 'LOADING...'
+        return <p className='grid__placeholder'>coming soon</p>
     }
 }
 

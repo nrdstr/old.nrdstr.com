@@ -34,43 +34,49 @@
             }
         }
     }
+}
 
-    button {
+.nav-link {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-left: 0;
+    overflow: hidden;
+    border-right: 0;
+    border-top: 0;
+    z-index: 1;
+
+    span {
         position: relative;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        border-left: 0;
-        overflow: hidden;
-        border-right: 0;
-        border-top: 0;
-        z-index: 1;
+        z-index: 10;
+    }
 
-        span {
-            position: relative;
-            z-index: 10;
+    &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        transform: scaleY(0);
+        transform-origin: bottom;
+        height: 100%;
+        z-index: 0;
+        transition: all 0.2s ease-in-out;
+    }
+
+    &--active {
+        &::after {
+            transform: scaleY(0.2);
         }
+    }
+
+    &:focus,
+    &:hover {
 
         &::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            transform: scaleY(0);
-            transform-origin: bottom;
-            height: 100%;
-            z-index: 0;
-            transition: all 0.2s ease-in-out;
-        }
-
-        &:focus,
-        &:hover {
-
-            &::after {
-                transform: scaleY(0.2);
-            }
+            transform: scaleY(0.2);
         }
     }
 }
@@ -78,7 +84,7 @@
 .btn {
     position: relative;
     background: $black;
-    border: 3px solid $yellow;
+    border-bottom: 3px solid $yellow;
     color: white;
     min-width: 90px;
     font-size: 1rem;

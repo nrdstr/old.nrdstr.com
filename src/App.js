@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import Main from './Main'
 import Background from './components/Background'
 import TopBar from './components/TopBar'
+import Modal from './components/Modal'
 import './App.scss'
 
 function App() {
@@ -15,8 +16,7 @@ function App() {
         <div className='app__inner'>
           <TopBar changecolor={changeBorderColor} />
           <Main border={logoBorder} />
-          {/* <Route exact path='/' component={() => <Main border={logoBorder} />} /> */}
-          {/* <Route path='/:slug' component={() => <Main border={logoBorder} />} /> */}
+          <Modal />
         </div>
       </Router>
     </div>

@@ -5,9 +5,8 @@ import NavLogo from './NavLogo'
 import { useStateValue } from '../state'
 
 const TopBar = props => {
-    const [{ page, init, toggle }, dispatch] = useStateValue()
+    const [{ init, toggle, loading }, dispatch] = useStateValue()
     const nav = useRef(null)
-    const [navStyle, setNavStyle] = useState({ opacity: 0 })
 
     const handleNav = page => {
         if (init) dispatch({ type: 'init', payload: false })
@@ -29,32 +28,19 @@ const TopBar = props => {
     }
 
     useEffect(() => {
-        // if (init && !toggle.modal.toggled) {
-        //     console.log('its this')
-        //     setTimeout(() => {
-        //         setNavStyle({ opacity: 1, zIndex: 2 })
-        //     }, 700)
-        // } else if (toggle.modal.toggled) {
-        //     setNavStyle({ opacity: 0, zIndex: 0 })
-        // } else {
-        //     setNavStyle({ opacity: 1, zIndex: 2 })
-        // }
-
-
-        if (toggle.modal.toggled) {
-            setNavStyle({ opacity: 0, zIndex: 0 })
+        if (loading) {
+            nav.current.style.opacity = 0
         } else {
-            setNavStyle({ opacity: 1, zIndex: 2 })
+            setTimeout(() => {
+                nav.current.style.opacity = 1
+            }, 800)
         }
+    }, [loading])
 
-        // if (toggle.modal.toggled) {
-        //     setNavStyle({ opacity: 0, zIndex: 0 })
-        // }
 
-    }, [page, toggle.modal])
 
     return (
-        <nav style={navStyle} ref={nav} className='topbar'>
+        <nav ref={nav} className='topbar'>
             <div className='topbar__inner'>
                 <NavLogo handleNav={handleNav} />
                 <NavLinks handleNav={handleNav} />

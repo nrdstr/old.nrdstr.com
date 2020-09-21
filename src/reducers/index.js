@@ -28,7 +28,7 @@ export const rootReducer = (state, action) => {
         case "loading":
             return {
                 ...state,
-                drafts: action.payload
+                loading: action.payload
             }
         case "toggle":
             return {

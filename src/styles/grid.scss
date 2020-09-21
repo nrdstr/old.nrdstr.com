@@ -15,4 +15,11 @@
         object-fit: cover;
         cursor: pointer;
     }
+
+    &__placeholder {
+        font-family: $font;
+        color: white;
+        font-size: 1rem;
+        margin: 0;
+    }
 }

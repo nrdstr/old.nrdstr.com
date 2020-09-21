@@ -16,7 +16,7 @@ export const initialState = {
     page: 'home',
     subpage: '',
     init: true,
-    loading: false,
+    loading: true,
 
     toggle: {
         home: false,
@@ -28,7 +28,8 @@ export const initialState = {
             toggled: false,
             index: null,
             id: '',
-            type: ''
+            type: '',
+            tab: ''
         },
     }
 }

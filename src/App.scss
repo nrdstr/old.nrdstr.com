@@ -30,6 +30,7 @@ button {
   overflow: hidden;
 
   &__inner {
+    position: relative;
     max-width: 1400px;
     @include size(100%, 100%);
     @include flex(column, center, center);
