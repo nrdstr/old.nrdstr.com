@@ -8,7 +8,7 @@ const Grid = props => {
 
     if (props.data[currentTab]) {
         return (
-            <div className='grid'>
+            <div className='grid animate--fade-in'>
                 { props.data[currentTab].map((item, i) => <GridItem key={item} type={props.type} index={i} id={item} tab={currentTab} />)}
             </div>
         )

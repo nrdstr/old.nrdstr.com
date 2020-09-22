@@ -82,12 +82,12 @@ button {
 .animate {
 
   &--fade-in {
-    animation: fade-in .25s ease-in-out;
+    animation: fade-in .5s ease-in-out;
     animation-fill-mode: forwards;
   }
 
   &--fade-out {
-    animation: fade-out .25s ease-in-out;
+    animation: fade-out .5s ease-in-out;
     animation-fill-mode: forwards;
   }
 }
