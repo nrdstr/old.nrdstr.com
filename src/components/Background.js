@@ -1,9 +1,11 @@
 import React, { useEffect, useRef } from 'react'
 import { createSequence } from '../utils'
 import { useStateValue } from "../state"
+import Loader from './Loader'
+
 
 const Background = () => {
-    const [{ shapesData, page, init, loading }, dispatch] = useStateValue()
+    const [{ shapesData, shapesLoading, page, init, loading }, dispatch] = useStateValue()
     const background = useRef(null)
     const numberOfShapes = Math.floor(Math.random() * (window.innerWidth / 30 - 50) + 50)
     const shapes = ['square', 'circle', 'half-circle', 'zig-zag', 'triangle']
@@ -27,6 +29,16 @@ const Background = () => {
             payload: shapesArr
         })
         clearInterval(handleAnimation)
+    }
+
+    const handleShapeLoader = (page, toggle) => {
+        dispatch({
+            type: 'shapesLoading',
+            payload: {
+                page: page,
+                toggled: toggle
+            }
+        })
     }
 
     const repositionShapes = page => {
@@ -61,6 +73,7 @@ const Background = () => {
             type: 'shapesData',
             payload: shapesArr
         })
+        handleShapeLoader(page, false)
     }
 
     const handleAnimation = () => {
@@ -81,16 +94,18 @@ const Background = () => {
                 setTimeout(() => {
                     background.current.style.opacity = 1
                     initShapes()
-                    // setInterval(handleAnimation, 466)
-                }, 400)
+                    handleShapeLoader(page, false)
+                }, 50)
             }
-            if (page === 'home' && !init) repositionShapes('home')
-            if (page === 'media') repositionShapes('media')
-            if (page === 'web') repositionShapes('web')
-            if (page === 'music') repositionShapes('music')
-            if (page === 'contact') repositionShapes('contact')
+            if (shapesLoading.toggled) {
+                if (shapesLoading.page === 'home' && !init) repositionShapes('home')
+                if (shapesLoading.page === 'media') repositionShapes('media')
+                if (shapesLoading.page === 'web') repositionShapes('web')
+                if (shapesLoading.page === 'music') repositionShapes('music')
+                if (shapesLoading.page === 'contact') repositionShapes('contact')
+            }
         }
-    }, [init, page, loading])
+    }, [init, page, loading, shapesLoading.toggled])
 
     if (shapesData) {
         return (
@@ -107,7 +122,7 @@ const Background = () => {
             </div>
         )
     } else {
-        return ''
+        return <Loader />
     }
 }
 

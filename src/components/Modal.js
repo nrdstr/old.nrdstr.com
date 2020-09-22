@@ -35,7 +35,6 @@ const Modal = props => {
                 modal.current.style.opacity = 1
             }, 10)
         } else {
-            console.log('this happened', toggle.modal.toggled)
             modal.current.style.opacity = 0
             setTimeout(() => {
                 modal.current.style.display = 'none'

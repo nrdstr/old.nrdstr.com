@@ -5,37 +5,43 @@ import NavLogo from './NavLogo'
 import { useStateValue } from '../state'
 
 const TopBar = props => {
-    const [{ init, toggle, loading }, dispatch] = useStateValue()
+    const [{ init, toggle, loading, shapesLoading, page }, dispatch] = useStateValue()
     const nav = useRef(null)
 
-    const handleNav = page => {
-        if (init) dispatch({ type: 'init', payload: false })
-        if (!init && page === 'home') {
-            dispatch({ type: 'toggle', payload: { ...toggle, home: true } })
-            props.history.push('/')
-            setTimeout(() => {
-                dispatch({ type: 'page', payload: page })
-            }, 200)
-        } else {
-            dispatch({ type: 'toggle', payload: { ...toggle, home: false } })
-            dispatch({ type: 'page', payload: page })
-            if (page === 'media') {
-                props.history.push(`/${page}/${toggle[page].current}`)
+    const handleNav = page2 => {
+        if (page2 !== page) {
+            dispatch({ type: 'shapesLoading', payload: { page: page2, toggled: true } })
+
+            if (init) dispatch({ type: 'init', payload: false })
+            if (!init && page2 === 'home') {
+                // dispatch({ type: 'toggle', payload: { ...toggle, home: true } })
+                props.history.push('/')
+                // setTimeout(() => {
+                dispatch({ type: 'page', payload: page2 })
+                // }, 200)
             } else {
-                props.history.push(`/${page}`)
+                setTimeout(() => {
+                    dispatch({ type: 'toggle', payload: { ...toggle, home: false } })
+                    dispatch({ type: 'page', payload: page2 })
+                    if (page2 === 'media') {
+                        props.history.push(`/${page2}/${toggle[page2].current}`)
+                    } else {
+                        props.history.push(`/${page2}`)
+                    }
+                }, 250)
             }
         }
     }
 
     useEffect(() => {
-        if (loading) {
+        if (loading || (!shapesLoading.toggled && init)) {
             nav.current.style.opacity = 0
         } else {
             setTimeout(() => {
                 nav.current.style.opacity = 1
             }, 800)
         }
-    }, [loading])
+    }, [loading, shapesLoading.toggled])
 
 
 

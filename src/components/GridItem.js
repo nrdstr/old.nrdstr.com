@@ -27,10 +27,10 @@ const GridItem = props => {
 
     return (
         <div className='grid-item'>
-            <LazyLoadImage
+            <img
                 onClick={handleClick}
                 className='grid__item'
-                effect='blur'
+                // effect='blur'
                 src={`https://drive.google.com/uc?id=${props.id}`} />
         </div>
     )

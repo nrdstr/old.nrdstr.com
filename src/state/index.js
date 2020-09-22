@@ -4,19 +4,15 @@ export const StateContext = createContext()
 
 export const initialState = {
     shapesData: [],
-    data: {
-        media: {
-            logos: [],
-            graphics: [],
-            videos: []
-        },
-        web: [],
-        music: []
-    },
+    data: {},
     page: 'home',
     subpage: '',
     init: true,
     loading: true,
+    shapesLoading: {
+        page: '',
+        toggled: true
+    },
 
     toggle: {
         home: false,

@@ -3,7 +3,7 @@ import { Instagram, Twitter, Youtube, Linkedin, Facebook } from '../icons/icons'
 
 const Socials = () => {
     return (
-        <ul className='socials'>
+        <ul className='socials animate--fade-in'>
             <li><a href='#'><Instagram /></a></li>
             <li><a href='#'><Twitter /></a></li>
             <li><a href='#'><Facebook /></a></li>
