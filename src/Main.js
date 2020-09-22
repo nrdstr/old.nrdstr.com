@@ -10,8 +10,10 @@ import GridNav from './components/GridNav'
 import { GoogleSpreadsheet } from 'google-spreadsheet'
 
 const Main = props => {
-    const [{ page, init, data, toggle, loading }, dispatch] = useStateValue()
-    const [contentStyles, setContentStyles] = useState({ opacity: 0, display: 'none' })
+    const [{ page, init, data, toggle, loading, shapesLoading }, dispatch] = useStateValue()
+    const [contentStyles, setContentStyles] = useState({ opacity: 1 })
+    const [mainStyles, setMainStyles] = useState({ opacity: 0 })
+    const [homeStyles, setHomeStyles] = useState({ opacity: 0 })
     const [initAnimation, setInitAnimation] = useState('main--init')
     const content = useRef(null)
     const main = useRef(null)
@@ -19,7 +21,7 @@ const Main = props => {
 
     const doc = new GoogleSpreadsheet(process.env.REACT_APP_SPREADSHEET_ID)
 
-    const path = props.history.location.pathname.substr(1, props.history.location.pathname.length).split('/')
+    let path = props.history.location.pathname.substr(1, props.history.location.pathname.length).split('/')
 
     const handleGoogleSheets = async () => {
         try {
@@ -78,6 +80,14 @@ const Main = props => {
                     }
                 }
             })
+
+            dispatch({
+                type: 'shapesLoading',
+                payload: {
+                    page: path[1],
+                    toggled: true
+                }
+            })
         }
 
         if (path[2] && path[0] === 'media') {
@@ -94,77 +104,64 @@ const Main = props => {
                 }
             })
 
-            dispatch({
-                type: 'toggle',
-                payload: {
-                    ...toggle,
-                    modal: {
-                        toggled: true,
-                        type: path[0],
-                        id: path[2],
-                        tab: path[1],
-                        index: index
+            if (!shapesLoading.toggled) {
+                dispatch({
+                    type: 'toggle',
+                    payload: {
+                        ...toggle,
+                        modal: {
+                            toggled: true,
+                            type: path[0],
+                            id: path[2],
+                            tab: path[1],
+                            index: index
+                        }
                     }
-                }
-            })
+                })
+            }
         }
+
+        // main.current.style.opacity = 1
     }
 
     useEffect(() => {
-        handleGoogleSheets()
+        if (Object.keys(data).length === 0) handleGoogleSheets()
 
         if (!loading) {
-            if (path.length > 0 && path[0]) {
-                dispatch({
-                    type: 'init',
-                    payload: false
-                })
-                setInitAnimation('')
 
+            if (path.length === 1 && path[0] === "") {
+
+                if (!shapesLoading.toggled) {
+                    setTimeout(() => {
+                        setHomeStyles({ opacity: 1 })
+                        setMainStyles({ opacity: 1 })
+                    }, 500)
+                }
+            } else {
+                dispatch({ type: 'init', payload: false })
                 dispatch({
                     type: 'page',
                     payload: path[0]
                 })
 
+                if (!shapesLoading.toggled) {
+                    setTimeout(() => {
+                        // setContentStyles({ opacity: 1 })
+                        setMainStyles({ opacity: 1 })
+                    }, 500)
+                }
+
                 handlePath()
-            } else {
-                if (init) {
-                    setTimeout(() => {
-                        setInitAnimation('')
-                    }, 300)
-                    setTimeout(() => {
-                        home.current.classList.remove('hide', 'remove')
-                    }, 575)
-                }
-
-                if (!init && page === 'home') {
-                    setContentStyles({ opacity: 0 })
-                    setTimeout(() => {
-                        home.current.classList.remove('remove')
-                        home.current.classList.remove('hide')
-                    }, 300)
-                }
-            }
-
-
-            if (page !== 'home') {
-                if (content) {
-                    setTimeout(() => {
-                        setContentStyles({ display: 'flex', opacity: 1 })
-                    }, 300)
-                }
-            } else {
-                setContentStyles({ opacity: 0, display: 'none' })
             }
         }
-    }, [page, loading])
+    }, [page, loading, shapesLoading.toggled])
 
 
     if (!loading) {
         if (page === 'home') {
             return (
-                <main ref={main} className={`main main__logo ${initAnimation} color-2`}>
-                    <div ref={home} className={`home hide remove`}>
+                <main ref={main} style={mainStyles} className={`main main__content main__home`}>
+                    <div ref={home} style={homeStyles} className={`home`}>
                         <Logo />
                         <Socials />
                     </div>
@@ -172,7 +169,7 @@ const Main = props => {
             )
         } else if (page === 'media') {
             return (
-                <main className={`main main__content color-1}`}>
+                <main style={mainStyles} className={`main main__content color-1}`}>
                     <div style={contentStyles} ref={content} className={`content color-2`}>
                         <h1 className='bg--blue'>media</h1>
                         <GridNav type={'media'} tabs={['logos', 'graphics', 'video']} />
@@ -182,7 +179,7 @@ const Main = props => {
             )
         } else if (page === 'web') {
             return (
-                <main className={`main main__content color-3`}>
+                <main style={mainStyles} className={`main main__content color-3`}>
                     <div style={contentStyles} ref={content} className={`content color-1`}>
                         <h1 className='bg--purple'>web</h1>
                     </div>
@@ -190,7 +187,7 @@ const Main = props => {
             )
         } else if (page === 'music') {
             return (
-                <main className={`main main__content color-4`}>
+                <main style={mainStyles} className={`main main__content color-4`}>
                     <div style={contentStyles} ref={content} className={`content color-3`}>
                         <h1 className='bg--yellow'>music</h1>
                     </div>
@@ -198,7 +195,7 @@ const Main = props => {
             )
         } else if (page === 'contact') {
             return (
-                <main className={`main main__content color-2`}>
+                <main style={mainStyles} className={`main main__content color-2`}>
                     <div style={contentStyles} ref={content} className={`content color-3`}>
                         <h1 className='bg--pink'>contact</h1>
                     </div>
@@ -206,7 +203,7 @@ const Main = props => {
             )
         } else {
             return (
-                <main className={`main main__content main--error color-2`}>
+                <main style={mainStyles} className={`main main__content main--error color-2`}>
                     <div style={contentStyles} ref={content} className={`content color-3`}>
                         <h1 className='bg--yellow'>404</h1>
                         <p>something is wrong</p>

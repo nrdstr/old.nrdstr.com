@@ -30,6 +30,11 @@ export const rootReducer = (state, action) => {
                 ...state,
                 loading: action.payload
             }
+        case "shapesLoading":
+            return {
+                ...state,
+                shapesLoading: action.payload
+            }
         case "toggle":
             return {
                 ...state,

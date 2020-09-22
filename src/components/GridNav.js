@@ -25,7 +25,7 @@ const GridNav = props => {
                     return (
                         <button key={tab}
                             onClick={() => handleGridNav(tab)}
-                            className={`grid-nav__btn ${tab === toggle[props.type].current && 'grid-nav__btn--active'}`}>
+                            className={`grid-nav__btn animate--fade-in ${tab === toggle[props.type].current && 'grid-nav__btn--active'}`}>
                             {tab}
                         </button>
                     )

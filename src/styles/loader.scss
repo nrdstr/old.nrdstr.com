@@ -12,6 +12,8 @@
   .item {
     @include size(60px, 60px);
     position: absolute;
+    background: url('/icons/n-logo.svg') no-repeat center;
+    background-size: 30px 30px;
   }
 
   .item-1 {
