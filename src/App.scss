@@ -1,5 +1,9 @@
 @import './styles/base';
 
+body {
+  background-color: $black;
+}
+
 ul,li {
   list-style: none;
 }

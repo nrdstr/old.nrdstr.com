@@ -22,7 +22,7 @@ const GridItem = props => {
                 }
             }
         })
-        props.history.push(`/${page}/${props.tab}/${props.id}`)
+        props.history.push(`/${page}/${props.tab}/${props.index}`)
     }
 
     return (
@@ -31,7 +31,7 @@ const GridItem = props => {
                 onClick={handleClick}
                 className='grid__item'
                 // effect='blur'
-                src={`https://drive.google.com/uc?id=${props.id}`} />
+                src={props.src} />
         </div>
     )
 }

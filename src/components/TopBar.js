@@ -39,7 +39,7 @@ const TopBar = props => {
         } else {
             setTimeout(() => {
                 nav.current.style.opacity = 1
-            }, 800)
+            }, 1000)
         }
     }, [loading, shapesLoading.toggled])
 

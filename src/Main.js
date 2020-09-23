@@ -4,7 +4,6 @@ import Logo from './components/Logo'
 import Socials from './components/Socials'
 import Grid from './components/Grid'
 import Loader from './components/Loader'
-import Modal from './components/Modal'
 import { withRouter } from "react-router-dom"
 import GridNav from './components/GridNav'
 import { GoogleSpreadsheet } from 'google-spreadsheet'
@@ -23,51 +22,76 @@ const Main = props => {
 
     let path = props.history.location.pathname.substr(1, props.history.location.pathname.length).split('/')
 
-    const handleGoogleSheets = async () => {
-        try {
-            await doc.useServiceAccountAuth({
-                client_email: process.env.REACT_APP_CLIENT_EMAIL,
-                private_key: process.env.REACT_APP_PRIVATE_KEY
-            })
+    const importAll = r => r.keys().map(r)
 
-            await doc.loadInfo()
-
-            const logosSheet = doc.sheetsById[process.env.REACT_APP_LOGOS_SHEET_ID]
-            const graphicsSheet = doc.sheetsById[process.env.REACT_APP_GRAPHICS_SHEET_ID]
-            const graphicsRows = await graphicsSheet.getRows()
-            const logoRows = await logosSheet.getRows()
-            let logoIds = []
-            let graphicIds = []
-
-            for (let i = 0; i < logoRows.length; i++) {
-                logoIds.push(logoRows[i].id)
-            }
-
-            for (let i = 0; i < graphicsRows.length; i++) {
-                graphicIds.push(graphicsRows[i].id)
-            }
-            dispatch({
-                type: 'data',
-                payload: {
-                    ...data,
-                    media: {
-                        ...data.media,
-                        logos: logoIds.reverse(),
-                        graphics: graphicIds.reverse()
-                    }
+    const handleGetImages = () => {
+        const logos = importAll(require.context('./site-media/site-logos', false, /\.(png|jpe?g|svg)$/))
+        const graphics = importAll(require.context('./site-media/site-graphics', false, /\.(png|jpe?g|svg)$/))
+        dispatch({
+            type: 'data',
+            payload: {
+                ...data,
+                media: {
+                    ...data.media,
+                    logos: logos,
+                    graphics: graphics
                 }
-            })
+            }
+        })
 
+        setTimeout(() => {
             dispatch({
                 type: 'loading',
                 payload: false
             })
-
-
-        } catch (e) {
-            console.error(e)
-        }
+        }, 1500)
     }
+
+    // const handleGoogleSheets = async () => {
+    //     try {
+    //         await doc.useServiceAccountAuth({
+    //             client_email: process.env.REACT_APP_CLIENT_EMAIL,
+    //             private_key: process.env.REACT_APP_PRIVATE_KEY
+    //         })
+
+    //         await doc.loadInfo()
+
+    //         const logosSheet = doc.sheetsById[process.env.REACT_APP_LOGOS_SHEET_ID]
+    //         const graphicsSheet = doc.sheetsById[process.env.REACT_APP_GRAPHICS_SHEET_ID]
+    //         const graphicsRows = await graphicsSheet.getRows()
+    //         const logoRows = await logosSheet.getRows()
+    //         let logoIds = []
+    //         let graphicIds = []
+
+    //         for (let i = 0; i < logoRows.length; i++) {
+    //             logoIds.push(logoRows[i].id)
+    //         }
+
+    //         for (let i = 0; i < graphicsRows.length; i++) {
+    //             graphicIds.push(graphicsRows[i].id)
+    //         }
+    //         dispatch({
+    //             type: 'data',
+    //             payload: {
+    //                 ...data,
+    //                 media: {
+    //                     ...data.media,
+    //                     // logos: logoIds.reverse(),
+    //                     // graphics: graphicIds.reverse()
+    //                 }
+    //             }
+    //         })
+
+    //         dispatch({
+    //             type: 'loading',
+    //             payload: false
+    //         })
+
+
+    //     } catch (e) {
+    //         console.error(e)
+    //     }
+    // }
 
     const handlePath = () => {
         if (path[1]) {
@@ -91,9 +115,7 @@ const Main = props => {
         }
 
         if (path[2] && path[0] === 'media') {
-            const dataPath = data[path[0]]
-            const dataTab = dataPath[path[1]]
-            const index = dataTab.indexOf(path[2])
+            const index = path[2]
             dispatch({
                 type: 'toggle',
                 payload: {
@@ -125,7 +147,7 @@ const Main = props => {
     }
 
     useEffect(() => {
-        if (Object.keys(data).length === 0) handleGoogleSheets()
+        if (Object.keys(data).length === 0) handleGetImages()
 
         if (!loading) {
 

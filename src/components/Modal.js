@@ -62,7 +62,7 @@ const Modal = props => {
                 }
             }
         })
-        props.history.push(`/${page}/${toggle.modal.tab}/${ids[index]}`)
+        props.history.push(`/${page}/${toggle.modal.tab}/${index}`)
     }
 
     const handlePrevious = () => {
@@ -85,16 +85,18 @@ const Modal = props => {
                 }
             }
         })
-        props.history.push(`/${page}/${toggle.modal.tab}/${ids[index]}`)
+        props.history.push(`/${page}/${toggle.modal.tab}/${index}`)
     }
 
 
     const Image = () => {
+        const dataPage = data[page]
+        const dataTab = dataPage[toggle.modal.tab]
         return (
             <div className='modal__image-container'>
                 <img
                     className='modal__image'
-                    src={`https://drive.google.com/uc?id=${ids[toggle.modal.index]}`} />
+                    src={dataTab[toggle.modal.index]} />
             </div>
         )
     }
