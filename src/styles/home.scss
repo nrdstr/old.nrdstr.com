@@ -4,6 +4,13 @@
     width: 100%;
     opacity: 0;
     transition: all 0.2s ease-in-out;
+
+    &__description{
+      color: white;
+      font-family: $font;
+      max-width: 500px;
+      margin: 7px 0 0 0;
+    }
 }
 
 .logo__container {

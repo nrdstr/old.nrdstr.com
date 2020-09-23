@@ -95,7 +95,7 @@ const Modal = props => {
         return (
             <div className='modal__image-container'>
                 <img
-                    className='modal__image'
+                    className='modal__image animate--fade-in-fast'
                     src={dataTab[toggle.modal.index]} />
             </div>
         )

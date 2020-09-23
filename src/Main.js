@@ -185,6 +185,9 @@ const Main = props => {
                 <main ref={main} style={mainStyles} className={`main main__content main__home`}>
                     <div ref={home} style={homeStyles} className={`home`}>
                         <Logo />
+                        <p className='home__description'>
+                            Lorem ipsum dolor sit amet, <strong>consectetur adipiscing elit</strong>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim.
+                        </p>
                         <Socials />
                     </div>
                 </main>
