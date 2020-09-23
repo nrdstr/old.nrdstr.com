@@ -90,6 +90,11 @@ button {
     animation-fill-mode: forwards;
   }
 
+  &--fade-in-fast {
+    animation: fade-in .2s ease-in-out;
+    animation-fill-mode: forwards;
+  }
+
   &--fade-out {
     animation: fade-out .5s ease-in-out;
     animation-fill-mode: forwards;
