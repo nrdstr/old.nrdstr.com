@@ -27,8 +27,8 @@ const Main = props => {
 
 
     const getData = () => {
-        const graphic = importAll(require.context('./site-media/site-logos', false, /\.(png|jpe?g|svg)$/))
-        const motion = importAll(require.context('./site-media/site-graphics', false, /\.(png|jpe?g|svg)$/))
+        const graphic = importAll(require.context('./site-media/site-graphic', false, /\.(png|jpe?g|svg)$/))
+        const motion = importAll(require.context('./site-media/site-motion', false, /\.(png|jpe?g|svg)$/))
         const web = importAll(require.context('./site-media/site-web', false, /\.(png|jpe?g|svg)$/))
         const webArr = []
 
