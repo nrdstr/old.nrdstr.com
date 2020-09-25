@@ -48,13 +48,13 @@ const Background = () => {
             let shapeClass = (shapesData[i].class).trim().split(' ')
             shapeClass.pop()
             let color
-            if (page === 'media') {
+            if (page === 'portfolio') {
                 color = 'color-2'
-            } else if (page === 'web') {
+            } else if (page === 'about') {
                 color = 'color-1'
             } else if (page === 'contact') {
                 color = 'color-4'
-            } else if (page === 'music') {
+            } else if (page === 'blog') {
                 color = 'color-3'
             } else {
                 color = colors[Math.floor(Math.random() * colors.length)]
@@ -99,9 +99,9 @@ const Background = () => {
             }
             if (shapesLoading.toggled) {
                 if (shapesLoading.page === 'home' && !init) repositionShapes('home')
-                if (shapesLoading.page === 'media') repositionShapes('media')
-                if (shapesLoading.page === 'web') repositionShapes('web')
-                if (shapesLoading.page === 'music') repositionShapes('music')
+                if (shapesLoading.page === 'portfolio') repositionShapes('portfolio')
+                if (shapesLoading.page === 'about') repositionShapes('about')
+                if (shapesLoading.page === 'blog') repositionShapes('blog')
                 if (shapesLoading.page === 'contact') repositionShapes('contact')
             }
         }

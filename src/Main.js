@@ -24,18 +24,34 @@ const Main = props => {
 
     const importAll = r => r.keys().map(r)
 
-    const handleGetImages = () => {
-        const logos = importAll(require.context('./site-media/site-logos', false, /\.(png|jpe?g|svg)$/))
-        const graphics = importAll(require.context('./site-media/site-graphics', false, /\.(png|jpe?g|svg)$/))
+
+
+    const getData = () => {
+        const graphic = importAll(require.context('./site-media/site-logos', false, /\.(png|jpe?g|svg)$/))
+        const motion = importAll(require.context('./site-media/site-graphics', false, /\.(png|jpe?g|svg)$/))
+        const web = importAll(require.context('./site-media/site-web', false, /\.(png|jpe?g|svg)$/))
+        const webArr = []
+
+        const webData = {
+            name: 'wigb',
+            url: 'https://wigb.space',
+            tags: ['new site'],
+            src: web[0]
+        }
+
+        webArr.push(webData)
+
         dispatch({
             type: 'data',
             payload: {
                 ...data,
-                media: {
-                    ...data.media,
-                    logos: logos,
-                    graphics: graphics
-                }
+                portfolio: {
+                    ...data.portfolio,
+                    graphic: graphic,
+                    motion: motion,
+                    web: web
+                },
+                web: webArr
             }
         })
 
@@ -46,52 +62,6 @@ const Main = props => {
             })
         }, 1500)
     }
-
-    // const handleGoogleSheets = async () => {
-    //     try {
-    //         await doc.useServiceAccountAuth({
-    //             client_email: process.env.REACT_APP_CLIENT_EMAIL,
-    //             private_key: process.env.REACT_APP_PRIVATE_KEY
-    //         })
-
-    //         await doc.loadInfo()
-
-    //         const logosSheet = doc.sheetsById[process.env.REACT_APP_LOGOS_SHEET_ID]
-    //         const graphicsSheet = doc.sheetsById[process.env.REACT_APP_GRAPHICS_SHEET_ID]
-    //         const graphicsRows = await graphicsSheet.getRows()
-    //         const logoRows = await logosSheet.getRows()
-    //         let logoIds = []
-    //         let graphicIds = []
-
-    //         for (let i = 0; i < logoRows.length; i++) {
-    //             logoIds.push(logoRows[i].id)
-    //         }
-
-    //         for (let i = 0; i < graphicsRows.length; i++) {
-    //             graphicIds.push(graphicsRows[i].id)
-    //         }
-    //         dispatch({
-    //             type: 'data',
-    //             payload: {
-    //                 ...data,
-    //                 media: {
-    //                     ...data.media,
-    //                     // logos: logoIds.reverse(),
-    //                     // graphics: graphicIds.reverse()
-    //                 }
-    //             }
-    //         })
-
-    //         dispatch({
-    //             type: 'loading',
-    //             payload: false
-    //         })
-
-
-    //     } catch (e) {
-    //         console.error(e)
-    //     }
-    // }
 
     const handlePath = () => {
         if (path[1]) {
@@ -114,7 +84,7 @@ const Main = props => {
             })
         }
 
-        if (path[2] && path[0] === 'media') {
+        if (path[2] && path[0] === 'portfolio') {
             const index = path[2]
             dispatch({
                 type: 'toggle',
@@ -142,12 +112,12 @@ const Main = props => {
                 })
             }
         }
-
-        // main.current.style.opacity = 1
     }
 
     useEffect(() => {
-        if (Object.keys(data).length === 0) handleGetImages()
+        if (Object.keys(data).length === 0) {
+            getData()
+        }
 
         if (!loading) {
 
@@ -168,7 +138,6 @@ const Main = props => {
 
                 if (!shapesLoading.toggled) {
                     setTimeout(() => {
-                        // setContentStyles({ opacity: 1 })
                         setMainStyles({ opacity: 1 })
                     }, 500)
                 }
@@ -178,43 +147,43 @@ const Main = props => {
         }
     }, [page, loading, shapesLoading.toggled])
 
-
     if (!loading) {
         if (page === 'home') {
             return (
                 <main ref={main} style={mainStyles} className={`main main__content main__home`}>
                     <div ref={home} style={homeStyles} className={`home`}>
                         <Logo />
-                        <p className='home__description'>
-                            Lorem ipsum dolor sit amet, <strong>consectetur adipiscing elit</strong>, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim.
+                        <p className='home__description animate--fade-in'>
+                            a <strong>multimedia design</strong> collective. driven by the world of music, entertainment, and culture.
                         </p>
                         <Socials />
                     </div>
                 </main>
             )
-        } else if (page === 'media') {
+        } else if (page === 'portfolio') {
             return (
                 <main style={mainStyles} className={`main main__content color-1}`}>
                     <div style={contentStyles} ref={content} className={`content color-2`}>
-                        <h1 className='bg--blue'>media</h1>
-                        <GridNav type={'media'} tabs={['logos', 'graphics', 'video']} />
-                        <Grid type={'media'} data={data.media} />
+                        <h1 className='bg--blue'>portfolio</h1>
+                        <GridNav type={'portfolio'} tabs={['graphic', 'motion', 'web']} />
+                        <Grid type={'portfolio'} data={data.portfolio} />
                     </div>
                 </main>
             )
-        } else if (page === 'web') {
+        } else if (page === 'about') {
             return (
                 <main style={mainStyles} className={`main main__content color-3`}>
                     <div style={contentStyles} ref={content} className={`content color-1`}>
-                        <h1 className='bg--purple'>web</h1>
+                        <h1 className='bg--purple'>about</h1>
+                        {/* <Grid type={'web'} data={data.about} /> */}
                     </div>
                 </main>
             )
-        } else if (page === 'music') {
+        } else if (page === 'blog') {
             return (
                 <main style={mainStyles} className={`main main__content color-4`}>
                     <div style={contentStyles} ref={content} className={`content color-3`}>
-                        <h1 className='bg--yellow'>music</h1>
+                        <h1 className='bg--yellow'>blog</h1>
                     </div>
                 </main>
             )

@@ -23,7 +23,7 @@ const TopBar = props => {
                 setTimeout(() => {
                     dispatch({ type: 'toggle', payload: { ...toggle, home: false } })
                     dispatch({ type: 'page', payload: page2 })
-                    if (page2 === 'media') {
+                    if (page2 === 'portfolio') {
                         props.history.push(`/${page2}/${toggle[page2].current}`)
                     } else {
                         props.history.push(`/${page2}`)

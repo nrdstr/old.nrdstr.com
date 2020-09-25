@@ -17,8 +17,11 @@ export const initialState = {
     toggle: {
         home: false,
         main: false,
-        media: {
-            current: 'logos'
+        web: {
+            current: ''
+        },
+        portfolio: {
+            current: 'graphic'
         },
         modal: {
             toggled: false,

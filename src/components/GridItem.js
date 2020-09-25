@@ -23,9 +23,12 @@ const GridItem = props => {
                 }
             }
         })
-        props.history.push(`/${page}/${props.tab}/${props.index}`)
+        if (props.type) {
+            props.history.push(`/${page}/${props.tab}/${props.index}`)
+        } else {
+            props.history.push(`/${page}/${props.index}`)
+        }
     }
-
     return (
         <div className='grid-item'>
             <div className='grid-item__placeholder'>
