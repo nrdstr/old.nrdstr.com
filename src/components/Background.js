@@ -61,12 +61,15 @@ const Background = () => {
             }
 
             shapesArr.push({
+                // ...shape,
                 class: `${shapeClass.join(' ')} ${color}`,
                 style: {
-                    top: Math.ceil(Math.floor(Math.random() * (window.innerHeight)) / 50) * 50,
-                    left: Math.ceil(Math.floor(Math.random() * (window.innerWidth)) / 50) * 50,
-                    transform: `rotate(${Math.floor(Math.random() * (360))}deg)`
+                    ...shape.style
                 }
+                // top: Math.ceil(Math.floor(Math.random() * (window.innerHeight)) / 50) * 50,
+                // left: Math.ceil(Math.floor(Math.random() * (window.innerWidth)) / 50) * 50,
+                // transform: `rotate(${Math.floor(Math.random() * (360))}deg)`
+                // }
             })
         })
         dispatch({

@@ -10,6 +10,7 @@ $progress: 0;
 	$progress: $progress + 1;
 	.color-#{$progress} {
 		border-color: $color !important;
+		transition: transform 0.233s ease-in-out;
 	}
 }
 
@@ -27,7 +28,7 @@ $progress: 0;
 .shape {
     transform: scale(1);
     transform-origin: center;
-    transition: transform 0.233s ease-in-out;
+    transition: all 0.233s ease-in-out;
 }
 
 .square {
