@@ -14,11 +14,8 @@ const TopBar = props => {
 
             if (init) dispatch({ type: 'init', payload: false })
             if (!init && page2 === 'home') {
-                // dispatch({ type: 'toggle', payload: { ...toggle, home: true } })
                 props.history.push('/')
-                // setTimeout(() => {
                 dispatch({ type: 'page', payload: page2 })
-                // }, 200)
             } else {
                 setTimeout(() => {
                     dispatch({ type: 'toggle', payload: { ...toggle, home: false } })

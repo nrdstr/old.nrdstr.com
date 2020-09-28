@@ -50,11 +50,11 @@ const Background = () => {
             let color
             if (page === 'portfolio') {
                 color = 'color-2'
-            } else if (page === 'about') {
+            } else if (page === 'services') {
                 color = 'color-1'
             } else if (page === 'contact') {
                 color = 'color-4'
-            } else if (page === 'blog') {
+            } else if (page === 'about') {
                 color = 'color-3'
             } else {
                 color = colors[Math.floor(Math.random() * colors.length)]
@@ -100,8 +100,8 @@ const Background = () => {
             if (shapesLoading.toggled) {
                 if (shapesLoading.page === 'home' && !init) repositionShapes('home')
                 if (shapesLoading.page === 'portfolio') repositionShapes('portfolio')
+                if (shapesLoading.page === 'services') repositionShapes('services')
                 if (shapesLoading.page === 'about') repositionShapes('about')
-                if (shapesLoading.page === 'blog') repositionShapes('blog')
                 if (shapesLoading.page === 'contact') repositionShapes('contact')
             }
         }

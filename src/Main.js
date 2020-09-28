@@ -170,20 +170,20 @@ const Main = props => {
                     </div>
                 </main>
             )
-        } else if (page === 'about') {
+        } else if (page === 'services') {
             return (
                 <main style={mainStyles} className={`main main__content color-3`}>
                     <div style={contentStyles} ref={content} className={`content color-1`}>
-                        <h1 className='bg--purple'>about</h1>
+                        <h1 className='bg--purple'>services</h1>
                         {/* <Grid type={'web'} data={data.about} /> */}
                     </div>
                 </main>
             )
-        } else if (page === 'blog') {
+        } else if (page === 'about') {
             return (
                 <main style={mainStyles} className={`main main__content color-4`}>
                     <div style={contentStyles} ref={content} className={`content color-3`}>
-                        <h1 className='bg--yellow'>blog</h1>
+                        <h1 className='bg--yellow'>about</h1>
                     </div>
                 </main>
             )
