@@ -24,18 +24,11 @@ const GridItem = props => {
             }
         })
         if (props.type) {
-            if (props.tab === 'web') {
-                props.history.push(`/${page}/${props.tab}/${data.web[props.index].url}`)
-            } else if (props.tab === 'motion') {
-                props.history.push(`/${page}/${props.tab}/${data.motion[props.index].snippet.resourceId.videoId}`)
-            } else {
-                props.history.push(`/${page}/${props.tab}/${props.index}`)
-            }
+            props.history.push(`/${page}/${props.tab}/${props.index}`)
         } else {
             props.history.push(`/${page}/${props.index}`)
         }
     }
-
 
     return (
         <div className={`grid-item grid-item--${props.tab}`}>

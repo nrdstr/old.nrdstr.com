@@ -49,6 +49,8 @@ const Modal = props => {
         props.history.push(`/${page}/${toggle.modal.tab}/${index}`)
     }
 
+
+
     const handlePrevious = () => {
         let index = toggle.modal.index
         if (index <= 0) {
@@ -92,11 +94,11 @@ const Modal = props => {
         console.log(webData)
         return (
             <>
-                {/* <Graphic /> */}
                 <div className='modal__web'>
                     <div className='modal__web-image-container'>
                         <img
                             className='modal__web-image animate--fade-in-fast'
+                            alt={webData.url}
                             src={webData.src} />
                     </div>
                     <div className='column'>
@@ -127,10 +129,7 @@ const Modal = props => {
         } else {
             return 'Loading...'
         }
-
-
     }
-
 
     useEffect(() => {
         if (toggle.modal.toggled) {
@@ -163,11 +162,9 @@ const Modal = props => {
                 <div className='modal__content-container'>
                     {content}
                 </div>
-
                 <div className='modal__btn-container modal__btn-container--full flex-end'>
                     <button onClick={handleNext} className='modal__btn' />
                 </div>
-
                 <div className='modal__mobile-btns'>
                     <div className='modal__btn-container'>
                         <button onClick={handlePrevious} className='modal__btn modal__btn--prev' />
@@ -176,8 +173,6 @@ const Modal = props => {
                         <button onClick={handleNext} className='modal__btn' />
                     </div>
                 </div>
-
-
             </div>
         </div>
     )

@@ -6,12 +6,8 @@
     border: 3px solid $purple;
     background-color: #151515;
     border-radius: $radius;
-    // min-height: 312px;
-    // min-width: 570px;
     box-sizing: border-box;
     width: 100%;
-
-    // transform: scaleX(.5);
     z-index: 1;
     transition: all 0.466s ease-in-out, min-height 0.466s ease-in-out;
 
@@ -25,9 +21,6 @@
     &__logo {
       @include flex(row, center, center);
       width: 100%;
-      // min-width: 1200px;
-      // border-left-width: 6px;
-      // border-right-width: 6px;
     }
 
     &__content {
@@ -39,7 +32,6 @@
     }
 
     &__home {
-      // height: 100%;
       border-left-color: $blue;
       border-right-color: $yellow;
       border-top-color: $pink;
@@ -51,7 +43,6 @@
   .content {
     @include flex(column, flex-start, flex-start);
     @include size(100%, 100%);
-    // margin-top: 80px;
     transition: all 0.2s ease-in-out;
 
     &--show {

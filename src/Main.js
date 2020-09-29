@@ -1,19 +1,16 @@
 import React, { useState, useEffect, useRef } from 'react'
+import { withRouter } from "react-router-dom"
+import Socials from './components/Socials'
+import GridNav from './components/GridNav'
+import Loader from './components/Loader'
 import { useStateValue } from './state'
 import Logo from './components/Logo'
-import Socials from './components/Socials'
 import Grid from './components/Grid'
-import Loader from './components/Loader'
-import { withRouter } from "react-router-dom"
-import GridNav from './components/GridNav'
-import { GoogleSpreadsheet } from 'google-spreadsheet'
 
 const Main = props => {
-    const [{ page, init, data, toggle, loading, shapesLoading }, dispatch] = useStateValue()
-    const [contentStyles, setContentStyles] = useState({ opacity: 1 })
+    const [{ page, data, toggle, loading, shapesLoading }, dispatch] = useStateValue()
     const [mainStyles, setMainStyles] = useState({ opacity: 0 })
     const [homeStyles, setHomeStyles] = useState({ opacity: 0 })
-    const content = useRef(null)
     const main = useRef(null)
     const home = useRef(null)
 
@@ -25,9 +22,9 @@ const Main = props => {
         const motionGridArr = []
         let youtubeRes = {}
         try {
-            const youtube = await fetch(`https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=PLKArVTG2TtWqEIdAhpIUes8T3ga8OCk-F&key=${process.env.REACT_APP_YOUTUBE_KEY}`)
-            const youtubeData = await youtube.json()
-            const youtubePlaylist = await youtubeData.items
+            const youtube = await fetch(`https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=PLKArVTG2TtWqEIdAhpIUes8T3ga8OCk-F&key=${process.env.REACT_APP_YOUTUBE_KEY}`),
+                youtubeData = await youtube.json(),
+                youtubePlaylist = await youtubeData.items
 
             await youtubePlaylist.forEach(item => {
                 motionGridArr.push(item.snippet.thumbnails.standard.url)
@@ -44,16 +41,13 @@ const Main = props => {
         return youtubeRes
     }
 
-
-
     const getData = async () => {
         const graphic = importAll(require.context('./site-media/site-graphic', false, /\.(png|jpe?g|svg)$/))
         const web = importAll(require.context('./site-media/site-web', false, /\.(png|jpe?g|svg)$/))
         const webArr = []
         const yt = await getYoutubePlaylist()
 
-        console.log()
-
+        // this data will go in the api or something
         const webData = {
             name: 'wigb',
             url: 'wigb.space',
@@ -139,14 +133,10 @@ const Main = props => {
     }
 
     useEffect(() => {
-        if (Object.keys(data).length === 0) {
-            getData()
-        }
+        if (Object.keys(data).length === 0) getData()
 
         if (!loading) {
-
             if (path.length === 1 && path[0] === "") {
-
                 if (!shapesLoading.toggled) {
                     setTimeout(() => {
                         setHomeStyles({ opacity: 1 })
@@ -155,10 +145,7 @@ const Main = props => {
                 }
             } else {
                 dispatch({ type: 'init', payload: false })
-                dispatch({
-                    type: 'page',
-                    payload: path[0]
-                })
+                dispatch({ type: 'page', payload: path[0] })
 
                 if (!shapesLoading.toggled) {
                     setTimeout(() => {
@@ -187,7 +174,7 @@ const Main = props => {
         } else if (page === 'portfolio') {
             return (
                 <main style={mainStyles} className={`main main__content color-1}`}>
-                    <div style={contentStyles} ref={content} className={`content color-2`}>
+                    <div className={`content color-2`}>
                         <h1 className='bg--blue'>portfolio</h1>
                         <GridNav type={'portfolio'} tabs={['graphic', 'motion', 'web']} />
                         <Grid type={'portfolio'} data={data.portfolio} />
@@ -197,16 +184,15 @@ const Main = props => {
         } else if (page === 'services') {
             return (
                 <main style={mainStyles} className={`main main__content color-3`}>
-                    <div style={contentStyles} ref={content} className={`content color-1`}>
+                    <div className={`content color-1`}>
                         <h1 className='bg--purple'>services</h1>
-                        {/* <Grid type={'web'} data={data.about} /> */}
                     </div>
                 </main>
             )
         } else if (page === 'about') {
             return (
                 <main style={mainStyles} className={`main main__content color-4`}>
-                    <div style={contentStyles} ref={content} className={`content color-3`}>
+                    <div className={`content color-3`}>
                         <h1 className='bg--yellow'>about</h1>
                     </div>
                 </main>
@@ -214,7 +200,7 @@ const Main = props => {
         } else if (page === 'contact') {
             return (
                 <main style={mainStyles} className={`main main__content color-2`}>
-                    <div style={contentStyles} ref={content} className={`content color-3`}>
+                    <div className={`content color-3`}>
                         <h1 className='bg--pink'>contact</h1>
                     </div>
                 </main>
@@ -222,7 +208,7 @@ const Main = props => {
         } else {
             return (
                 <main style={mainStyles} className={`main main__content main--error color-2`}>
-                    <div style={contentStyles} ref={content} className={`content color-3`}>
+                    <div className={`content color-3`}>
                         <h1 className='bg--yellow'>404</h1>
                         <p>something is wrong</p>
                     </div>

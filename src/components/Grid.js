@@ -9,13 +9,14 @@ const Grid = props => {
     if (props.data[currentTab]) {
         return (
             <div className={`grid grid--${currentTab} animate--fade-in`}>
-                { props.data[currentTab].map((item, i) => <GridItem key={item} src={props.data[currentTab] === 'web' ? item.src : item} type={props.type} index={i} id={item} tab={currentTab} />)}
-            </div>
-        )
-    } else if (props.data[currentTab] && props.data[currentTab] === 'web') {
-        return (
-            <div className='grid animate--fade-in'>
-                { props.data.map((item, i) => <GridItem key={i} src={item.src} index={i} tab={currentTab} />)}
+                { props.data[currentTab].map((item, i) => {
+                    return <GridItem key={item}
+                        src={props.data[currentTab] === 'web' ? item.src : item}
+                        type={props.type}
+                        index={i}
+                        id={item}
+                        tab={currentTab} />
+                })}
             </div>
         )
     } else {

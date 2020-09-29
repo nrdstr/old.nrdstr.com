@@ -2,7 +2,6 @@ import React from 'react'
 import { NrdstrIcon } from '../icons/icons'
 
 const Loader = () => {
-
     return (
         <div className="loader-container">
             <div className="item item-1"><NrdstrIcon /></div>

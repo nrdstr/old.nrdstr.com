@@ -1,21 +1,16 @@
 .grid-item {
-    position: relative;
     @include flex(column, flex-start, center);
+    position: relative;
     width: 100%;
-    // overflow: hidden;
     max-height: 451px;
 
-    &--motion {
-        // overflow: hidden;
-    }
-
     &__placeholder {
+        @include flex(column, center, center);
+        @include size(100%, 100%);
         position: absolute;
         top: 0;
         left: 0;
-        @include size(100%, 100%);
         background-color: $black;
-        @include flex(column, center, center);
         opacity: 1;
         z-index: 4;
 
