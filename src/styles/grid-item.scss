@@ -2,7 +2,12 @@
     position: relative;
     @include flex(column, flex-start, center);
     width: 100%;
+    // overflow: hidden;
     max-height: 451px;
+
+    &--motion {
+        // overflow: hidden;
+    }
 
     &__placeholder {
         position: absolute;

@@ -2,6 +2,7 @@
     position: relative;
     @include flex(column, flex-start, center);
     padding: 30px 20px;
+    padding-bottom: 0;
     border: 3px solid $purple;
     background-color: #151515;
     border-radius: $radius;

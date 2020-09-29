@@ -7,7 +7,7 @@ import 'react-lazy-load-image-component/src/effects/blur.css'
 
 const GridItem = props => {
 
-    const [{ toggle, page }, dispatch] = useStateValue()
+    const [{ toggle, page, data }, dispatch] = useStateValue()
 
     const handleClick = () => {
         dispatch({
@@ -29,8 +29,10 @@ const GridItem = props => {
             props.history.push(`/${page}/${props.index}`)
         }
     }
+
+
     return (
-        <div className='grid-item'>
+        <div className={`grid-item grid-item--${props.tab}`}>
             <div className='grid-item__placeholder'>
                 <NrdstrIcon />
             </div>

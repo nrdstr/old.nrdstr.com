@@ -37,7 +37,7 @@
         @include flex(row, space-around, center);
         height: calc(100% - 100px);
         width: 100%;
-        margin-top: 70px;
+        margin-top: 90px;
 
         @media (max-width: 414px) {
             @include flex(column, center, center);
@@ -170,6 +170,7 @@
         font-size: 0.9rem;
         text-transform: lowercase;
         margin: 0;
+        margin-bottom: 40px;
     }
 
     &__web-tags {
