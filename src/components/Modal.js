@@ -76,23 +76,42 @@ const Modal = props => {
     const Graphic = () => {
         const dataPage = data[page]
         const dataTab = dataPage[toggle.modal.tab]
-        return (
-            <div className='modal__content-container'>
-                <img
-                    className='modal__image animate--fade-in-fast'
-                    src={dataTab[toggle.modal.index]} />
-            </div>
-        )
+        return <img
+            className='modal__image animate--fade-in-fast'
+            src={dataTab[toggle.modal.index]} />
     }
 
     const Motion = () => {
         const { motion } = data
+        return <YouTube id={motion[toggle.modal.index].snippet.resourceId.videoId} />
+    }
+
+    const Web = () => {
+        const { web } = data
+        const webData = web[toggle.modal.index]
+        console.log(webData)
         return (
-            <div className='modal__content-container'>
-                <div className='video-responsive'>
-                    <YouTube id={motion[toggle.modal.index].snippet.resourceId.videoId} />
+            <>
+                {/* <Graphic /> */}
+                <div className='modal__web'>
+                    <div className='modal__web-image-container'>
+                        <img
+                            className='modal__web-image animate--fade-in-fast'
+                            src={webData.src} />
+                    </div>
+                    <div className='column'>
+                        <a className='modal__web-link' href={`https://${webData.url}`} title={`https://${webData.url}`}>
+                            {webData.url}
+                        </a>
+                    </div>
+                    <div className='modal__web-tags'>
+                        {webData.tags.map(tag => {
+                            return <p key={tag} className='modal__web-tag'>{tag}</p>
+                        })}
+                    </div>
+                    <p className='modal__web-description'>{webData.description}</p>
                 </div>
-            </div>
+            </>
         )
     }
 
@@ -103,6 +122,8 @@ const Modal = props => {
             setContent(<Graphic />)
         } else if (tab === 'motion') {
             setContent(<Motion />)
+        } else if (tab === 'web') {
+            setContent(<Web />)
         } else {
             return 'Loading...'
         }
@@ -139,8 +160,9 @@ const Modal = props => {
                 <div className='modal__btn-container modal__btn-container--full'>
                     <button onClick={handlePrevious} className='modal__btn modal__btn--prev' />
                 </div>
-
-                {content}
+                <div className='modal__content-container'>
+                    {content}
+                </div>
 
                 <div className='modal__btn-container modal__btn-container--full flex-end'>
                     <button onClick={handleNext} className='modal__btn' />

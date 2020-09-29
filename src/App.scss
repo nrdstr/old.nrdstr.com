@@ -100,3 +100,11 @@ button {
     animation-fill-mode: forwards;
   }
 }
+
+.row {
+  @include flex(row, center, center);
+}
+
+.column {
+  @include flex(column, center, center);
+}
