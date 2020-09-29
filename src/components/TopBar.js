@@ -17,7 +17,6 @@ const TopBar = props => {
                 props.history.push('/')
                 dispatch({ type: 'page', payload: page2 })
             } else {
-                // setTimeout(() => {
                 dispatch({ type: 'toggle', payload: { ...toggle, home: false } })
                 dispatch({ type: 'page', payload: page2 })
                 if (page2 === 'portfolio') {
@@ -25,7 +24,6 @@ const TopBar = props => {
                 } else {
                     props.history.push(`/${page2}`)
                 }
-                // }, 250)
             }
         }
     }

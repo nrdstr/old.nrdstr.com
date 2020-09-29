@@ -13,24 +13,47 @@ const Main = props => {
     const [contentStyles, setContentStyles] = useState({ opacity: 1 })
     const [mainStyles, setMainStyles] = useState({ opacity: 0 })
     const [homeStyles, setHomeStyles] = useState({ opacity: 0 })
-    const [initAnimation, setInitAnimation] = useState('main--init')
     const content = useRef(null)
     const main = useRef(null)
     const home = useRef(null)
 
-    const doc = new GoogleSpreadsheet(process.env.REACT_APP_SPREADSHEET_ID)
 
     let path = props.history.location.pathname.substr(1, props.history.location.pathname.length).split('/')
 
     const importAll = r => r.keys().map(r)
 
+    const getYoutubePlaylist = async () => {
+        const motionGridArr = []
+        let youtubeRes = {}
+        try {
+            const youtube = await fetch(`https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=PLKArVTG2TtWqEIdAhpIUes8T3ga8OCk-F&key=AIzaSyCi0JjMY_Jf6dnwAjLtflKelIELwtU7LSk`)
+            const youtubeData = await youtube.json()
+            const youtubePlaylist = await youtubeData.items
+
+            await youtubePlaylist.forEach(item => {
+                motionGridArr.push(item.snippet.thumbnails.standard.url)
+            })
+
+            youtubeRes = {
+                motionGrid: motionGridArr,
+                motionVids: youtubePlaylist
+            }
+        } catch (e) {
+            console.error(e)
+        }
+
+        return youtubeRes
+    }
 
 
-    const getData = () => {
+
+    const getData = async () => {
         const graphic = importAll(require.context('./site-media/site-graphic', false, /\.(png|jpe?g|svg)$/))
-        const motion = importAll(require.context('./site-media/site-motion', false, /\.(png|jpe?g|svg)$/))
         const web = importAll(require.context('./site-media/site-web', false, /\.(png|jpe?g|svg)$/))
         const webArr = []
+        const yt = await getYoutubePlaylist()
+
+        console.log()
 
         const webData = {
             name: 'wigb',
@@ -48,9 +71,10 @@ const Main = props => {
                 portfolio: {
                     ...data.portfolio,
                     graphic: graphic,
-                    motion: motion,
+                    motion: yt.motionGrid,
                     web: web
                 },
+                motion: yt.motionVids,
                 web: webArr
             }
         })
