@@ -17,7 +17,6 @@ const Main = props => {
     const main = useRef(null)
     const home = useRef(null)
 
-
     let path = props.history.location.pathname.substr(1, props.history.location.pathname.length).split('/')
 
     const importAll = r => r.keys().map(r)
@@ -26,7 +25,7 @@ const Main = props => {
         const motionGridArr = []
         let youtubeRes = {}
         try {
-            const youtube = await fetch(`https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=PLKArVTG2TtWqEIdAhpIUes8T3ga8OCk-F&key=AIzaSyCi0JjMY_Jf6dnwAjLtflKelIELwtU7LSk`)
+            const youtube = await fetch(`https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=PLKArVTG2TtWqEIdAhpIUes8T3ga8OCk-F&key=${process.env.REACT_APP_YOUTUBE_KEY}`)
             const youtubeData = await youtube.json()
             const youtubePlaylist = await youtubeData.items
 
