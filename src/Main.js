@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import { withRouter } from "react-router-dom"
 import Socials from './components/Socials'
 import GridNav from './components/GridNav'
+import { Link } from 'react-router-dom'
 import Loader from './components/Loader'
 import { useStateValue } from './state'
 import Logo from './components/Logo'
@@ -16,12 +17,15 @@ const Main = props => {
 
     let path = props.history.location.pathname.substr(1, props.history.location.pathname.length).split('/')
 
+
+
     const importAll = r => r.keys().map(r)
 
     const getYoutubePlaylist = async () => {
         const motionGridArr = []
         let youtubeRes = {}
         try {
+            const url = `https://www.googleapis.com/youtube/v3/playlists?part=snippet&id=PLKArVTG2TtWqEIdAhpIUes8T3ga8OCk-F&key=${process.env.REACT_APP_YOUTUBE_KEY}`
             const youtube = await fetch(`https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=PLKArVTG2TtWqEIdAhpIUes8T3ga8OCk-F&key=${process.env.REACT_APP_YOUTUBE_KEY}`),
                 youtubeData = await youtube.json(),
                 youtubePlaylist = await youtubeData.items
@@ -158,6 +162,25 @@ const Main = props => {
         }
     }, [page, loading, shapesLoading.toggled])
 
+    const handlePageChange = (page, tab) => {
+        dispatch({ type: 'page', payload: page })
+        if (tab) {
+            dispatch({
+                type: 'toggle',
+                payload: {
+                    ...toggle,
+                    [page]: {
+                        current: tab
+                    }
+                }
+            })
+            props.history.push(`${page}/${tab}`)
+        } else {
+            props.history.push(page)
+        }
+
+    }
+
     if (!loading) {
         if (page === 'home') {
             return (
@@ -194,6 +217,19 @@ const Main = props => {
                 <main style={mainStyles} className={`main main__content color-4`}>
                     <div className={`content color-3`}>
                         <h1 className='bg--yellow'>about</h1>
+                        <div className='about animate--fade-in'>
+                            <Logo />
+                            <div className='about__description'>
+                                <h2 className='about__title bg--pink'>our story</h2>
+                                <p>
+                                    we are a united states based group of designers and developers offering services ranging from <button className='link' onClick={() => handlePageChange('portfolio', 'graphic')}> logo design</button> to <button className='link' onClick={() => handlePageChange('portfolio', 'web')}>website design and maintenance</button>. we enjoy good challenges to help push our creative limits further every day.
+                                </p>
+                                <p style={{ marginTop: 20 }}>
+                                    check out our <button className='link' onClick={() => handlePageChange('services')}>services</button> page for more information. we'd be delighted to make your next project a <strong>nrdstr</strong> project!
+                                </p>
+                            </div>
+                            <Socials />
+                        </div>
                     </div>
                 </main>
             )
