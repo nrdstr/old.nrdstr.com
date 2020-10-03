@@ -2,10 +2,12 @@ import React, { useState, useEffect, useRef } from 'react'
 import { withRouter } from "react-router-dom"
 import Socials from './components/Socials'
 import GridNav from './components/GridNav'
-import { Link } from 'react-router-dom'
 import Loader from './components/Loader'
+import Contact from './components/Contact'
+import About from './components/About'
 import { useStateValue } from './state'
 import Logo from './components/Logo'
+import { NrdstrContactIcon } from './icons/icons'
 import Grid from './components/Grid'
 
 const Main = props => {
@@ -14,6 +16,13 @@ const Main = props => {
     const [homeStyles, setHomeStyles] = useState({ opacity: 0 })
     const main = useRef(null)
     const home = useRef(null)
+
+    const name = useRef(null)
+    const email = useRef(null)
+    const subject = useRef(null)
+    const message = useRef(null)
+
+    const [isDisabled, setDisabled] = useState(true)
 
     let path = props.history.location.pathname.substr(1, props.history.location.pathname.length).split('/')
 
@@ -181,6 +190,23 @@ const Main = props => {
 
     }
 
+    const handleFormSubmit = e => {
+        e.preventDefault()
+        let sub = 'message from nrdstr.com'
+
+        if (subject.current.value) {
+            sub = `${subject.current.value} - ${sub}`
+        }
+        const msg = {
+            name: name.current.value,
+            email: email.current.value,
+            subject: sub,
+            message: message.current.value
+        }
+
+        console.log(msg)
+    }
+
     if (!loading) {
         if (page === 'home') {
             return (
@@ -217,19 +243,7 @@ const Main = props => {
                 <main style={mainStyles} className={`main main__content color-4`}>
                     <div className={`content color-3`}>
                         <h1 className='bg--yellow'>about</h1>
-                        <div className='about animate--fade-in'>
-                            <Logo />
-                            <div className='about__description'>
-                                <h2 className='about__title bg--pink'>our story</h2>
-                                <p>
-                                    we are a united states based group of designers and developers offering services ranging from <button className='link' onClick={() => handlePageChange('portfolio', 'graphic')}> logo design</button> to <button className='link' onClick={() => handlePageChange('portfolio', 'web')}>website design and maintenance</button>. we enjoy good challenges to help push our creative limits further every day.
-                                </p>
-                                <p style={{ marginTop: 20 }}>
-                                    check out our <button className='link' onClick={() => handlePageChange('services')}>services</button> page for more information. we'd be delighted to make your next project a <strong>nrdstr</strong> project!
-                                </p>
-                            </div>
-                            <Socials />
-                        </div>
+                        <About handlePageChange={handlePageChange} />
                     </div>
                 </main>
             )
@@ -237,7 +251,8 @@ const Main = props => {
             return (
                 <main style={mainStyles} className={`main main__content color-2`}>
                     <div className={`content color-3`}>
-                        <h1 className='bg--pink'>contact</h1>
+                        <h1 style={{ zIndex: 20 }} className='bg--pink'>contact</h1>
+                        <Contact />
                     </div>
                 </main>
             )
