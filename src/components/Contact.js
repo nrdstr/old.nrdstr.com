@@ -18,7 +18,7 @@ const Contact = () => {
 
     const handlePostEmail = async () => {
         // const url = `http://localhost:5000/contact-form`
-        const url = process.env.REACT_APP_CONTACT_FORM_URL
+        const url = `https://127.0.0.1:5000/contact-form`
         const post = await fetch(url, {
             method: 'POST',
             headers: {
