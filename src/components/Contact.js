@@ -17,8 +17,8 @@ const Contact = () => {
     const [msg, setMsg] = useState(initialMsg)
 
     const handlePostEmail = async () => {
-        // const url = `http://localhost:5000/contact-form`
-        const url = `http://127.0.0.1:5000/contact-form`
+        const url = `http://localhost:5000/contact-form`
+        // const url = `http://127.0.0.1:5000/contact-form`
         const post = await fetch(url, {
             method: 'POST',
             headers: {
