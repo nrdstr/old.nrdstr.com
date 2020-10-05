@@ -4,46 +4,67 @@ import { NrdstrContactIcon } from '../icons/icons'
 
 const Contact = () => {
     const [isDisabled, setDisabled] = useState(true)
-    const name = useRef(null)
-    const email = useRef(null)
-    const subject = useRef(null)
-    const message = useRef(null)
+    const [messageSuccess, setMessageSuccess] = useState(false)
+    const [emailIsValidated, setEmailVaildation] = useState(false)
 
-    const [msg, setMsg] = useState({
+    const initialMsg = {
         name: '',
         email: '',
         subject: '',
-        message: ''
-    })
+        message: '',
+    }
 
-    const handleFormSubmit = (e, type) => {
+    const [msg, setMsg] = useState(initialMsg)
+
+    const handlePostEmail = async () => {
+        // const url = `http://localhost:5000/contact-form`
+        const url = process.env.REACT_APP_CONTACT_FORM_URL
+        const post = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(msg)
+        })
+
+        try {
+            const res = await post.json()
+            if (res.success) {
+                setMessageSuccess(true)
+                setMsg(initialMsg)
+                setDisabled(true)
+                setTimeout(() => {
+                    setMessageSuccess(false)
+                }, 3000)
+
+            }
+        } catch (e) {
+            console.error(e)
+        }
+    }
+
+    const handleFormSubmit = e => {
         e.preventDefault()
-        console.log(e)
-        let sub = 'message from nrdstr.com'
-
-        if (subject.current.value) {
-            sub = `${subject.current.value} - ${sub}`
-        }
-        const msg = {
-            name: name.current.value,
-            email: email.current.value,
-            subject: sub,
-            message: message.current.value
-        }
-
-        console.log(msg)
+        handlePostEmail()
     }
 
     useEffect(() => {
         const { name, email, message } = msg
 
-        if (name.length > 0 && email.length > 0 && message.length > 0) {
+        if (name.length > 0 && email.length > 0 && message.length > 0 && emailIsValidated) {
             setDisabled(false)
         } else {
             setDisabled(true)
         }
+    }, [msg, messageSuccess, emailIsValidated])
 
-    }, [msg])
+    const handleEmailValidation = () => {
+        if (/^[a-zA-Z0-9]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$/.test(msg.email)) {
+            setEmailVaildation(true)
+        } else {
+            setEmailVaildation(false)
+        }
+    }
 
     const handleUpdateForm = (e, type) => {
         e.preventDefault()
@@ -55,26 +76,28 @@ const Contact = () => {
                     ...msg,
                     [t]: e.target.value
                 }
+                if (t === 'email') handleEmailValidation()
             }
         })
-        console.log(mssg)
         setMsg(mssg)
     }
+
+    const pink = `rgb(241, 123, 165)`
 
     return (
         <div className='contact animate--fade-in'>
             <div className='contact__split animate--fade-in'>
-                <NrdstrContactIcon />
+                <NrdstrContactIcon success={messageSuccess} />
             </div>
             <div className='contact__container'>
                 <h2>get in touch</h2>
                 <Socials />
-                <p>ready to move forward on your next project? have a question or two? just want to say hi? drop us a message and we'll get back to you <strong>asap</strong>. we are just as available on our socials. feel free to send us a dm any time.</p>
+                <p>ready to move forward on your next project? just want to say hi? send us a message and we'll get back to you <strong>asap</strong>. you can reach us directly at <a href='mailto:hello@nrdstr.com' className='link'>hello@nrdstr.com</a> or on any our socials. drop a dm any time!</p>
                 <form className='contact__form'>
-                    <input onChange={e => handleUpdateForm(e, 'name')} type='text' className='contact__input' ref={name} placeholder='name*' />
-                    <input onChange={e => handleUpdateForm(e, 'email')} type='email' className='contact__input' ref={email} placeholder='email*' />
-                    <input onChange={e => handleUpdateForm(e, 'subject')} type='text' className='contact__input' ref={subject} placeholder='subject' />
-                    <textarea onChange={e => handleUpdateForm(e, 'message')} className='contact__textarea' ref={message} placeholder='message*' />
+                    <input style={{ border: `3px solid ${msg.name.length > 0 ? 'transparent' : pink}` }} onChange={e => handleUpdateForm(e, 'name')} type='text' className='contact__input' value={msg.name} placeholder='name*' />
+                    <input style={{ border: `3px solid ${((msg.email.length > 0) && emailIsValidated) ? 'transparent' : pink}` }} onChange={e => handleUpdateForm(e, 'email')} type='email' className='contact__input' value={msg.email} placeholder='email*' />
+                    <input onChange={e => handleUpdateForm(e, 'subject')} type='text' className='contact__input' value={msg.subject} placeholder='subject' />
+                    <textarea style={{ border: `3px solid ${msg.message.length > 0 ? 'transparent' : pink}` }} onChange={e => handleUpdateForm(e, 'message')} className='contact__textarea' value={msg.message} placeholder='message*' />
                     <button onClick={handleFormSubmit} disabled={isDisabled} title='submit form' className='contact__submit-btn'>
                         send
                     </button>
