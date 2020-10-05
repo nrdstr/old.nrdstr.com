@@ -18,7 +18,7 @@ const Contact = () => {
 
     const handlePostEmail = async () => {
         // const url = `http://localhost:5000/contact-form`
-        const url = `http://127.0.0.1:5000/contact-form`
+        const url = `https://api.nrdstr.com/contact-form`
         const post = await fetch(url, {
             method: 'POST',
             headers: {
