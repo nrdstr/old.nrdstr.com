@@ -5,6 +5,11 @@
     opacity: 0;
     transition: all 0.2s ease-in-out;
 
+    @media (max-width: 575.98px) {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+
     &__description{
       color: white;
       font-family: $font;
