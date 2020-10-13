@@ -236,7 +236,7 @@ const Main = props => {
                     <div className={`content color-1`}>
                         <h1 className='bg--purple desktop'>services</h1>
                         <div className='services'>
-                            <div className='services__grid'>
+                            <div style={{ opacity: 0 }} className='services__grid'>
                                 <div className='services__grid-item'>
                                     <div className='services__grid-item-header'>
                                         <h3>graphic design</h3>

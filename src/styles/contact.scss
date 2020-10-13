@@ -7,7 +7,7 @@
     }
 
     @media (max-width: 575.98px) {
-        height: auto;
+        // height: auto;
         overflow-y: auto;
         padding-top: 40px;
     }
@@ -28,10 +28,6 @@
         margin-bottom: 20px;
 
         @media (max-width: 767px) {
-            margin-bottom: 0;
-        }
-
-        @media (max-width: 575.98px) {
             display: none;
         }
     }
@@ -46,13 +42,8 @@
         margin-bottom: 20px;
 
         @media (max-width: 767px) {
-            border-left: 3px solid $blue;
-            border-top: none;
             padding-top: 0;
-        }
-
-        @media (max-width: 575.98px) {
-            border: 0;
+            border: none;
         }
 
         h2 {
