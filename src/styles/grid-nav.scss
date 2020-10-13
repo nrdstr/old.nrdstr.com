@@ -1,6 +1,7 @@
 .grid-nav {
     @include flex(row, center, center);
     margin: 20px 0 20px 0;
+    min-height: 21px;
 
     &__btn {
         background: transparent;

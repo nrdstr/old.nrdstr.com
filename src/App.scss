@@ -1,5 +1,6 @@
 @import './styles/base';
 
+
 body {
   background-color: $black;
 }
@@ -41,6 +42,11 @@ button {
     max-width: 1400px;
     @include size(100%, 100%);
     @include flex(column, center, center);
+    box-sizing: border-box;
+
+    * {
+      box-sizing: border-box;
+    }
   }
 }
 

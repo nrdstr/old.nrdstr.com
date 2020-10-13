@@ -222,7 +222,7 @@ const Main = props => {
             )
         } else if (page === 'portfolio') {
             return (
-                <main style={mainStyles} className={`main main__content color-1}`}>
+                <main style={mainStyles} className={`main main__content color-1`}>
                     <div className={`content color-2`}>
                         <h1 className='bg--blue desktop'>portfolio</h1>
                         <GridNav type={'portfolio'} tabs={['graphic', 'motion', 'web']} />
