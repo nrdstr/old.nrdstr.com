@@ -1,13 +1,12 @@
 import React from 'react'
 import { useStateValue } from '../state'
 import { withRouter } from 'react-router-dom'
-import { LazyLoadImage } from 'react-lazy-load-image-component'
 import { NrdstrIcon } from '../icons/icons'
 import 'react-lazy-load-image-component/src/effects/blur.css'
 
 const GridItem = props => {
 
-    const [{ toggle, page, data }, dispatch] = useStateValue()
+    const [{ toggle, page }, dispatch] = useStateValue()
 
     const handleClick = () => {
         dispatch({
@@ -38,6 +37,7 @@ const GridItem = props => {
             <img
                 onClick={handleClick}
                 className='grid__img animate--fade-in-fast'
+                alt='portfolio item'
                 src={props.src} />
         </div>
     )

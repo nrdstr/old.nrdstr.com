@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react'
+import React, { useRef, useEffect } from 'react'
 import { withRouter } from 'react-router-dom'
 import NavLinks from './NavLinks'
 import NavLogo from './NavLogo'
@@ -43,6 +43,7 @@ const TopBar = props => {
                 nav.current.style.opacity = 1
             }, 1000)
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [loading, shapesLoading.toggled])
 
 

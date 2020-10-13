@@ -7,7 +7,6 @@ import Contact from './components/Contact'
 import About from './components/About'
 import { useStateValue } from './state'
 import Logo from './components/Logo'
-import { NrdstrContactIcon } from './icons/icons'
 import Grid from './components/Grid'
 
 const Main = props => {
@@ -17,12 +16,6 @@ const Main = props => {
     const main = useRef(null)
     const home = useRef(null)
 
-    const name = useRef(null)
-    const email = useRef(null)
-    const subject = useRef(null)
-    const message = useRef(null)
-
-    const [isDisabled, setDisabled] = useState(true)
 
     let path = props.history.location.pathname.substr(1, props.history.location.pathname.length).split('/')
 
@@ -34,7 +27,6 @@ const Main = props => {
         const motionGridArr = []
         let youtubeRes = {}
         try {
-            const url = `https://www.googleapis.com/youtube/v3/playlists?part=snippet&id=PLKArVTG2TtWqEIdAhpIUes8T3ga8OCk-F&key=${process.env.REACT_APP_YOUTUBE_KEY}`
             const youtube = await fetch(`https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=PLKArVTG2TtWqEIdAhpIUes8T3ga8OCk-F&key=${process.env.REACT_APP_YOUTUBE_KEY}`),
                 youtubeData = await youtube.json(),
                 youtubePlaylist = await youtubeData.items
@@ -60,7 +52,6 @@ const Main = props => {
         const webArr = []
         const yt = await getYoutubePlaylist()
 
-        // this data will go in the api or something
         const webData = {
             name: 'wigb',
             url: 'wigb.space',
@@ -169,6 +160,7 @@ const Main = props => {
                 handlePath()
             }
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [page, loading, shapesLoading.toggled])
 
     const handlePageChange = (page, tab) => {
@@ -190,22 +182,6 @@ const Main = props => {
 
     }
 
-    const handleFormSubmit = e => {
-        e.preventDefault()
-        let sub = 'message from nrdstr.com'
-
-        if (subject.current.value) {
-            sub = `${subject.current.value} - ${sub}`
-        }
-        const msg = {
-            name: name.current.value,
-            email: email.current.value,
-            subject: sub,
-            message: message.current.value
-        }
-
-        console.log(msg)
-    }
 
     if (!loading) {
         if (page === 'home') {
@@ -277,7 +253,7 @@ const Main = props => {
             )
         } else if (page === 'contact') {
             return (
-                <main style={mainStyles} className={`main main__content color-2`}>
+                <main style={mainStyles} className={`main main__content main__content--scroll color-2`}>
                     <div className={`content color-3`}>
                         <h1 style={{ zIndex: 20 }} className='bg--pink desktop'>contact</h1>
                         <Contact />

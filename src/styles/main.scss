@@ -26,8 +26,12 @@
     &__content {
       height: 100%;
       overflow: hidden;
-      padding-top: 80px;
+      padding-top: 100px;
       background-color: transparentize(#151515, 0.2);
+
+      &--scroll {
+        // overflow: auto;
+      }
 
       // @media (max-width: 575.98px) {
       //   overflow-y: auto;

@@ -61,15 +61,10 @@ const Background = () => {
             }
 
             shapesArr.push({
-                // ...shape,
                 class: `${shapeClass.join(' ')} ${color}`,
                 style: {
                     ...shape.style
                 }
-                // top: Math.ceil(Math.floor(Math.random() * (window.innerHeight)) / 50) * 50,
-                // left: Math.ceil(Math.floor(Math.random() * (window.innerWidth)) / 50) * 50,
-                // transform: `rotate(${Math.floor(Math.random() * (360))}deg)`
-                // }
             })
         })
         dispatch({
@@ -112,6 +107,7 @@ const Background = () => {
                 if (shapesLoading.page === 'contact') repositionShapes('contact')
             }
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [init, page, loading, shapesLoading.toggled])
 
     if (shapesData) {

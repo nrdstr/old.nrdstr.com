@@ -7,8 +7,8 @@
     }
 
     @media (max-width: 575.98px) {
-        overflow-y: auto;
-        padding: 110px 0 0 0;
+        padding: 0;
+        overflow: auto;
     }
 
     &__left {
@@ -35,7 +35,6 @@
         @include flex(column, center, center);
         @include size(100%, calc(100% - 20px));
         padding: 20px;
-        box-sizing: border-box;
         border: 3px solid $blue;
         border-left: none;
         margin-bottom: 20px;
@@ -47,6 +46,7 @@
 
         @media (max-width: 575.98px) {
             margin-bottom: 0;
+            // height: auto;
         }
 
         h2 {
@@ -54,6 +54,7 @@
             color: $white;
             font-size: 1.8rem;
             margin: 0 0 3px 0;
+            text-align: center;
         }
 
         p {
@@ -66,6 +67,10 @@
         }
     }
 
+    &__info {
+        padding-top: 300px;
+    }
+
     &__icon {
         @include size(90px, 90px);
       }
@@ -74,6 +79,7 @@
         @include flex(column, center, center);
         width: 100%;
         height: 100%;
+        min-height: 515px;
         max-width: 600px;
 
         @media (max-width: 575.98px) {

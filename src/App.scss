@@ -1,8 +1,16 @@
 @import './styles/base';
 
+html {
+  overflow: hidden;
+}
 
 body {
   background-color: $black;
+  overflow: hidden;
+}
+
+#root {
+  overflow: hidden;
 }
 
 ul,li {

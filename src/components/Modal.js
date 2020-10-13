@@ -80,6 +80,7 @@ const Modal = props => {
         const dataTab = dataPage[toggle.modal.tab]
         return <img
             className='modal__image animate--fade-in-fast'
+            alt='portfolio item'
             src={dataTab[toggle.modal.index]} />
     }
 
@@ -147,6 +148,7 @@ const Modal = props => {
                 modal.current.style.display = 'none'
             }, 200)
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [toggle.modal])
 
 

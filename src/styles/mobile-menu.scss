@@ -6,7 +6,7 @@
     left: 3px;
     background-color: $black;
     z-index: 1000;
-    transition: all .433s ease-in-out;
+    transition: all .2 ease-in-out;
 
     &__inner {
         @include size(100%, 100%);

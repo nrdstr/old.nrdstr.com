@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import Socials from './Socials'
 import { NrdstrContactIcon } from '../icons/icons'
 
@@ -17,7 +17,6 @@ const Contact = () => {
     const [msg, setMsg] = useState(initialMsg)
 
     const handlePostEmail = async () => {
-        // const url = `http://localhost:5000/contact-form`
         const url = `https://api.nrdstr.com/contact-form`
         const post = await fetch(url, {
             method: 'POST',
@@ -90,9 +89,11 @@ const Contact = () => {
                 <NrdstrContactIcon success={messageSuccess} />
             </div>
             <div className='contact__container'>
-                <h2>get in touch</h2>
-                <Socials />
-                <p>ready to move forward on your next project? just want to say hi? send us a message and we'll get back to you <strong>asap</strong>. you can reach us directly at <a href='mailto:hello@nrdstr.com' className='link'>hello@nrdstr.com</a> or on any our socials. drop a dm any time!</p>
+                <div className='contact__info'>
+                    <h2>get in touch</h2>
+                    <Socials />
+                    <p>ready to move forward on your next project? just want to say hi? send us a message and we'll get back to you <strong>asap</strong>. you can reach us directly at <a href='mailto:hello@nrdstr.com' className='link'>hello@nrdstr.com</a> or on any our socials. drop a dm any time!</p>
+                </div>
                 <form className='contact__form'>
                     <input style={{ border: `3px solid ${msg.name.length > 0 ? 'transparent' : pink}` }} onChange={e => handleUpdateForm(e, 'name')} type='text' className='contact__input' value={msg.name} placeholder='name*' />
                     <input style={{ border: `3px solid ${((msg.email.length > 0) && emailIsValidated) ? 'transparent' : pink}` }} onChange={e => handleUpdateForm(e, 'email')} type='email' className='contact__input' value={msg.email} placeholder='email*' />

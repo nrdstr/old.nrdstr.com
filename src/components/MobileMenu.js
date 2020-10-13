@@ -44,16 +44,16 @@ const MobileMenu = props => {
         menu.current.classList.add('hide')
         setTimeout(() => {
             menu.current.classList.add('remove')
-        }, 433)
+        }, 200)
     }
 
     useEffect(() => {
         if (toggle.menu) {
             menu.current.classList.remove('remove', 'hide')
-            menu.current.classList.add('animate--fade-in')
+            menu.current.classList.add('animate--fade-in-fast')
             setTimeout(() => {
-                menu.current.classList.remove('animate--fade-in')
-            }, 500)
+                menu.current.classList.remove('animate--fade-in-fast')
+            }, 200)
         }
     }, [toggle.menu])
 
