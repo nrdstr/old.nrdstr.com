@@ -1,0 +1,34 @@
+.mobile-menu {
+    @include size(100%, 100%);
+    @include flex(column, center, center);
+    position: fixed;
+    top: 0;
+    background-color: $black;
+    z-index: 1000;
+    transition: all .433s ease-in-out;
+
+    &__inner {
+        @include size(100%, 100%);
+        @include flex(column, center, center);
+    }
+
+    &__top-bar {
+        position: absolute;
+        top: 0;
+        padding: 0 20px;
+        box-sizing: border-box;
+        @include size(100%, 100px);
+        @include flex(row, flex-end, center);
+        z-index: 1020;
+    }
+
+    &__close {
+        @include size(60px, 60px);
+        background: url('/icons/close.svg') no-repeat center;
+        background-size: contain;
+
+        @media (max-width: 414px) {
+            @include size(50px, 50px);
+        }
+    }
+}

@@ -95,10 +95,14 @@ const Background = () => {
             if (init) {
                 initShapes()
                 setTimeout(() => {
-                    background.current.style.opacity = 1
+
                     initShapes()
                     handleShapeLoader(page, false)
                 }, 50)
+
+                setTimeout(() => {
+                    background.current.style.opacity = 1
+                }, 466)
             }
             if (shapesLoading.toggled) {
                 if (shapesLoading.page === 'home' && !init) repositionShapes('home')

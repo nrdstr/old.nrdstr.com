@@ -1,6 +1,6 @@
 .grid-nav {
     @include flex(row, center, center);
-    margin: 0 0 20px 0;
+    margin: 20px 0 20px 0;
 
     &__btn {
         background: transparent;

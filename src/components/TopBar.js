@@ -28,6 +28,13 @@ const TopBar = props => {
         }
     }
 
+    const handleOpenMenu = () => {
+        dispatch({
+            type: 'toggle',
+            payload: { ...toggle, menu: true }
+        })
+    }
+
     useEffect(() => {
         if (loading || (!shapesLoading.toggled && init)) {
             nav.current.style.opacity = 0
@@ -44,7 +51,16 @@ const TopBar = props => {
         <nav ref={nav} className='topbar'>
             <div className='topbar__inner'>
                 <NavLogo handleNav={handleNav} />
-                <NavLinks handleNav={handleNav} />
+                <div className='desktop'>
+                    <NavLinks handleNav={handleNav} />
+                </div>
+                <div className='mobile'>
+                    <button className='mobile-menu-btn' title='open mobile menu' onClick={handleOpenMenu}>
+                        <span className='mobile-menu-btn__bar' />
+                        <span className='mobile-menu-btn__bar' />
+                        <span className='mobile-menu-btn__bar' />
+                    </button>
+                </div>
             </div>
         </nav>
     )

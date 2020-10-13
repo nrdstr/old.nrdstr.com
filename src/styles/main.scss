@@ -29,6 +29,10 @@
       overflow: hidden;
       padding-top: 80px;
       background-color: transparentize(#151515, 0.2);
+
+      // @media (max-width: 575.98px) {
+      //   overflow-y: auto;
+      // }
     }
 
     &__home {
@@ -44,6 +48,10 @@
     @include flex(column, flex-start, flex-start);
     @include size(100%, 100%);
     transition: all 0.2s ease-in-out;
+
+    // @media (max-width: 575.98px) {
+    //   height: auto;
+    // }
 
     &--show {
       opacity: 1;

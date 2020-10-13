@@ -17,6 +17,7 @@ export const initialState = {
     toggle: {
         home: false,
         main: false,
+        menu: false,
         web: {
             current: ''
         },

@@ -224,7 +224,7 @@ const Main = props => {
             return (
                 <main style={mainStyles} className={`main main__content color-1}`}>
                     <div className={`content color-2`}>
-                        <h1 className='bg--blue'>portfolio</h1>
+                        <h1 className='bg--blue desktop'>portfolio</h1>
                         <GridNav type={'portfolio'} tabs={['graphic', 'motion', 'web']} />
                         <Grid type={'portfolio'} data={data.portfolio} />
                     </div>
@@ -234,7 +234,35 @@ const Main = props => {
             return (
                 <main style={mainStyles} className={`main main__content color-3`}>
                     <div className={`content color-1`}>
-                        <h1 className='bg--purple'>services</h1>
+                        <h1 className='bg--purple desktop'>services</h1>
+                        <div className='services'>
+                            <div className='services__grid'>
+                                <div className='services__grid-item'>
+                                    <div className='services__grid-item-header'>
+                                        <h3>graphic design</h3>
+                                    </div>
+                                    <div className='services__grid-item-content'>
+                                        <p>itmem</p>
+                                    </div>
+                                </div>
+                                <div className='services__grid-item'>
+                                    <div className='services__grid-item-header'>
+                                        <h3>web design</h3>
+                                    </div>
+                                    <div className='services__grid-item-content'>
+                                        <p>itmem</p>
+                                    </div>
+                                </div>
+                                <div className='services__grid-item'>
+                                    <div className='services__grid-item-header'>
+                                        <h3>video production</h3>
+                                    </div>
+                                    <div className='services__grid-item-content'>
+                                        <p>itmem</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </main>
             )
@@ -242,7 +270,7 @@ const Main = props => {
             return (
                 <main style={mainStyles} className={`main main__content color-4`}>
                     <div className={`content color-3`}>
-                        <h1 className='bg--yellow'>about</h1>
+                        <h1 className='bg--yellow desktop'>about</h1>
                         <About handlePageChange={handlePageChange} />
                     </div>
                 </main>
@@ -251,7 +279,7 @@ const Main = props => {
             return (
                 <main style={mainStyles} className={`main main__content color-2`}>
                     <div className={`content color-3`}>
-                        <h1 style={{ zIndex: 20 }} className='bg--pink'>contact</h1>
+                        <h1 style={{ zIndex: 20 }} className='bg--pink desktop'>contact</h1>
                         <Contact />
                     </div>
                 </main>

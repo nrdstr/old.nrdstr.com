@@ -12,6 +12,10 @@
     align-items: center;
     z-index: 2;
 
+    // @media (max-width: 575.98px) {
+    //     background-color: transparentize($black, .5);
+    // }
+
     &__inner {
         width: 100%;
         max-width: 1400px;
@@ -21,5 +25,44 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+    }
+}
+
+
+
+
+.mobile-menu-btn {
+    @include size(50px, 50px);
+    @include flex(column, center, center);
+    position: relative;
+    z-index: 2000;
+
+    &__bar {
+        @include size(100%, 6px);
+        position: absolute;
+        background-color: $white;
+        transition: all .433s ease-in-out;
+
+        &:first-child {
+            top: 0;
+            transform: rotate(0);
+        }
+
+        &:last-child {
+            bottom: 0;
+            transform: rotate(0);
+        }
+
+        &--active {
+            &:first-child {
+                // top: 0;
+                transform: rotate(45deg);
+            }
+
+            &:last-child {
+                // bottom: 0;
+                transform: rotate(-45deg);
+            }
+        }
     }
 }

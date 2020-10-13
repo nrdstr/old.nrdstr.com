@@ -1,0 +1,64 @@
+.services {
+    @include flex(column, center, center);
+    @include size(100%, 100%);
+    margin-bottom: 23px;
+
+    &__grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        @include size(100%, 100%);
+    }
+
+    &__grid-item {
+        @include flex(column, center, center);
+        max-height: 600px;
+        height: 100%;
+        flex: 1;
+        margin: 0 10px;
+        box-sizing: border-box;
+        align-self: center;
+
+        &:nth-child(2) {
+
+            .services__grid-item-header {
+                border-color: $purple;
+                border-bottom: 0;
+            }
+
+            .services__grid-item-content {
+                border: 3px solid $purple;
+            }
+        }
+    }
+
+    &__grid-item-header {
+        @include size(100%, 100px);
+        background-color: transparent;
+        @include flex(row, center, center);
+        border: 3px solid $yellow;
+
+
+        h3 {
+            font-family: $font;
+            font-weight: bold;
+            margin: 0;
+            color: $white;
+            font-size: 1.5rem;
+        }
+    }
+
+    &__grid-item-content {
+        @include flex(column, center, center);
+        width: 100%;
+        flex: 1;
+        background-color: transparent;
+        border: 3px solid $yellow;
+        border-top: 0;
+
+        p {
+            font-family: $font;
+            font-size: 1rem;
+            color: $black;
+        }
+    }
+}

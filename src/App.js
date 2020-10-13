@@ -5,6 +5,7 @@ import Background from './components/Background'
 import TopBar from './components/TopBar'
 import Modal from './components/Modal'
 import Div100vh from 'react-div-100vh'
+import MobileMenu from './components/MobileMenu'
 import './App.scss'
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <TopBar changecolor={changeBorderColor} />
           <Main border={logoBorder} />
           <Modal />
+          <MobileMenu />
         </div>
       </Router>
     </Div100vh>

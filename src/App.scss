@@ -111,3 +111,16 @@ button {
 .column {
   @include flex(column, center, center);
 }
+
+
+.desktop {
+  @media (max-width: 575.98px) {
+    display: none;
+  }
+}
+
+.mobile {
+  @media (min-width: 575.97px) {
+    display: none;
+  }
+}
