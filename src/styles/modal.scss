@@ -13,6 +13,11 @@
     transition: all 0.2s ease-in-out;
     z-index: 9001;
 
+    @media (max-width: 575.98px) {
+        left: 3px;
+        width: calc(100% - 6px);
+    }
+
     &__top-bar {
         position: absolute;
         top: 0;
@@ -28,7 +33,7 @@
         background: url('/icons/close.svg') no-repeat center;
         background-size: contain;
 
-        @media (max-width: 414px) {
+        @media (max-width: 575.98px) {
             @include size(50px, 50px);
         }
     }
@@ -39,7 +44,7 @@
         width: 100%;
         margin-top: 90px;
 
-        @media (max-width: 414px) {
+        @media (max-width: 575.98px) {
             @include flex(column, center, center);
             margin-top: 60px;
         }
@@ -71,7 +76,7 @@
                 justify-content: flex-end;
                 padding-right: 5px;
             }
-            @media (max-width: 414px) {
+            @media (max-width: 575.98px) {
                 display: none;
             }
 
@@ -79,11 +84,11 @@
     }
 
     &__mobile-btns {
-        @include flex(row, center, center);
+        @include flex(row, space-around, center);
         width: 100%;
         display: none;
 
-        @media (max-width: 414px) {
+        @media (max-width: 575.98px) {
             display: flex;
         }
     }
@@ -114,7 +119,7 @@
         height: 100%;
         z-index: 10;
 
-        @media (max-width: 414px) {
+        @media (max-width: 575.98px) {
             width: 100%;
             height: auto;
         }
