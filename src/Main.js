@@ -212,10 +212,14 @@ const Main = props => {
                     <div className={`content color-1`}>
                         <h1 className='bg--purple desktop'>services</h1>
                         <div className='services'>
-                            <div style={{ opacity: 0 }} className='services__grid'>
+                            <div className='services__grid'>
                                 <div className='services__grid-item'>
                                     <div className='services__grid-item-header'>
                                         <h3>graphic design</h3>
+                                        <div className='shape__container services__shape'>
+                                            <div className='shape zig-zag color-1' />
+                                            <div className='shape zig-zag color-1' style={{ marginLeft: 3 }} />
+                                        </div>
                                     </div>
                                     <div className='services__grid-item-content'>
                                         <p>itmem</p>
@@ -223,7 +227,52 @@ const Main = props => {
                                 </div>
                                 <div className='services__grid-item'>
                                     <div className='services__grid-item-header'>
-                                        <h3>web design</h3>
+                                        <h3>web site development</h3>
+                                        <div className='shape__container services__shape'>
+                                            <div className='shape zig-zag color-3' />
+                                            <div className='shape zig-zag color-3' style={{ marginLeft: 3 }} />
+                                        </div>
+                                    </div>
+                                    <div className='services__grid-item-content'>
+                                        <p>we want to make your web presence kick ass.</p>
+                                        <p>labels</p>
+                                        <p>agencies</p>
+                                        <p>artists</p>
+                                        <p>producers</p>
+                                    </div>
+                                </div>
+                                <div className='services__grid-item'>
+                                    <div className='services__grid-item-header'>
+                                        <h3>social media kits</h3>
+                                        <div className='shape__container services__shape'>
+                                            <div className='shape zig-zag color-1' />
+                                            <div className='shape zig-zag color-1' style={{ marginLeft: 3 }} />
+                                        </div>
+                                    </div>
+                                    <div className='services__grid-item-content'>
+                                        <p>logos, profile pictures, banners, get it all in one stop.</p>
+                                    </div>
+                                </div>
+
+                                <div className='services__grid-item'>
+                                    <div className='services__grid-item-header'>
+                                        <h3>artist branding</h3>
+                                        <div className='shape__container services__shape'>
+                                            <div className='shape zig-zag color-3' />
+                                            <div className='shape zig-zag color-3' style={{ marginLeft: 3 }} />
+                                        </div>
+                                    </div>
+                                    <div className='services__grid-item-content'>
+                                        <p>unique branding for your artistic project or persona.</p>
+                                    </div>
+                                </div>
+                                <div className='services__grid-item'>
+                                    <div className='services__grid-item-header'>
+                                        <h3>lyric videos</h3>
+                                        <div className='shape__container services__shape'>
+                                            <div className='shape zig-zag color-1' />
+                                            <div className='shape zig-zag color-1' style={{ marginLeft: 3 }} />
+                                        </div>
                                     </div>
                                     <div className='services__grid-item-content'>
                                         <p>itmem</p>
@@ -231,12 +280,17 @@ const Main = props => {
                                 </div>
                                 <div className='services__grid-item'>
                                     <div className='services__grid-item-header'>
-                                        <h3>video production</h3>
+                                        <h3>visualizer videos</h3>
+                                        <div className='shape__container services__shape'>
+                                            <div className='shape zig-zag color-3' />
+                                            <div className='shape zig-zag color-3' style={{ marginLeft: 3 }} />
+                                        </div>
                                     </div>
                                     <div className='services__grid-item-content'>
                                         <p>itmem</p>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>

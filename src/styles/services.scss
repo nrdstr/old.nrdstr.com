@@ -1,41 +1,65 @@
 .services {
-    @include flex(column, center, center);
+    @include flex(column, flex-start, center);
     @include size(100%, 100%);
     margin-bottom: 23px;
+    overflow-y: auto;
+    padding-right: 5px;
+
+    &::-webkit-scrollbar { width: 0.7rem !important }
+
+    &::-webkit-scrollbar-track {
+        background-color: lighten($black, 5%);
+      }
+
+    &::-webkit-scrollbar-thumb {
+        // background: linear-gradient(135deg, $purple, $blue, $purple);
+        background-color: $purple;
+        // border-radius: 1rem;
+        // box-shadow: inset 2px 2px 2px hsla(0,0%,100%,.25), inset -2px -2px 2px rgba(0,0,0,.25);
+      }
+
+      @media (max-width: 575.98px) {
+        &::-webkit-scrollbar { width: 0 !important; opacity: 0; }
+      }
 
     &__grid {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         @include size(100%, 100%);
+        grid-gap: 10px;
     }
 
     &__grid-item {
         @include flex(column, center, center);
-        max-height: 600px;
+        max-height: 400px;
         height: 100%;
+        min-height: 400px;
+        background-color: transparentize($black, .1);
         flex: 1;
-        margin: 0 10px;
+        margin: 0;
         box-sizing: border-box;
         align-self: center;
 
-        &:nth-child(2) {
+        // &:nth-child(even) {
 
-            .services__grid-item-header {
-                border-color: $purple;
-                border-bottom: 0;
-            }
+        //     .services__grid-item-header {
+        //         border-color: $purple;
+        //     }
 
-            .services__grid-item-content {
-                border: 3px solid $purple;
-            }
-        }
+        //     .services__grid-item-content {
+        //         border: 3px solid $purple;
+        //         border-top: 0;
+        //     }
+        // }
     }
 
     &__grid-item-header {
         @include size(100%, 100px);
         background-color: transparent;
-        @include flex(row, center, center);
-        border: 3px solid $yellow;
+        @include flex(column, center, center);
+        position: relative;
+        border: 3px solid $purple;
+        border-bottom: 0;
 
 
         h3 {
@@ -47,18 +71,24 @@
         }
     }
 
+    &__shape {
+        bottom: -10px;
+    }
+
     &__grid-item-content {
         @include flex(column, center, center);
         width: 100%;
         flex: 1;
         background-color: transparent;
-        border: 3px solid $yellow;
+        border: 3px solid $purple;
+        padding: 0 20px 20px 20px;
         border-top: 0;
 
         p {
             font-family: $font;
             font-size: 1rem;
-            color: $black;
+            color: $white;
+            font-weight: bold;
         }
     }
 }
