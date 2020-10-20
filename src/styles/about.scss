@@ -7,6 +7,12 @@
       padding-bottom: 0;
     }
 
+    * {
+      &::selection {
+          background-color: $pink;
+      }
+    }
+
     &__title {
       padding: 10px 15px;
       color: $black;

@@ -91,7 +91,7 @@ const Background = () => {
                 initShapes()
                 setTimeout(() => {
 
-                    initShapes()
+                    // initShapes()
                     handleShapeLoader(page, false)
                 }, 50)
 

@@ -5,6 +5,12 @@
     overflow-y: auto;
     padding-right: 5px;
 
+    * {
+        &::selection {
+            background-color: $yellow;
+        }
+    }
+
     &::-webkit-scrollbar { width: 0.7rem !important }
 
     &::-webkit-scrollbar-track {
@@ -18,7 +24,7 @@
         // box-shadow: inset 2px 2px 2px hsla(0,0%,100%,.25), inset -2px -2px 2px rgba(0,0,0,.25);
       }
 
-      @media (max-width: 575.98px) {
+      @media (max-width: 767px) {
         &::-webkit-scrollbar { width: 0 !important; opacity: 0; }
       }
 
@@ -26,7 +32,15 @@
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         @include size(100%, 100%);
-        grid-gap: 10px;
+        grid-gap: 15px;
+
+        @media (max-width: 1000px) {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        @media (max-width: 767px) {
+            grid-template-columns: 1fr;
+        }
     }
 
     &__grid-item {
@@ -36,21 +50,32 @@
         min-height: 400px;
         background-color: transparentize($black, .1);
         flex: 1;
-        margin: 0;
         box-sizing: border-box;
         align-self: center;
 
-        // &:nth-child(even) {
+        &:nth-child(even) {
 
-        //     .services__grid-item-header {
-        //         border-color: $purple;
-        //     }
+            .divider {
+                border-color: $yellow !important;
+            }
 
-        //     .services__grid-item-content {
-        //         border: 3px solid $purple;
-        //         border-top: 0;
-        //     }
-        // }
+            li {
+
+                &::before {
+                    background-color: $purple;
+                }
+            }
+
+            .services__cta-btn {
+                background-color: $blue;
+                color: $black;
+
+                &:focus,
+                &:hover {
+                    background-color: $yellow;
+                }
+            }
+        }
     }
 
     &__grid-item-header {
@@ -76,19 +101,67 @@
     }
 
     &__grid-item-content {
-        @include flex(column, center, center);
+        @include flex(column, flex-start, center);
+        position: relative;
         width: 100%;
         flex: 1;
         background-color: transparent;
         border: 3px solid $purple;
-        padding: 0 20px 20px 20px;
+        padding: 15px 20px 20px 20px;
+        margin: 0;
         border-top: 0;
 
         p {
             font-family: $font;
             font-size: 1rem;
             color: $white;
-            font-weight: bold;
+            text-align: center;
+            margin-bottom: 7px;
+            max-width: 318px;
         }
     }
+
+    &__content {
+        padding: 0;
+        margin: 0;
+
+        li {
+            @include flex(row, flex-start, center);
+            padding: 7px 0;
+
+            &::before {
+                content: '';
+                display: inline-block;
+                @include size(5px, 5px);
+                margin-right: 5px;
+                margin-top: 2px;
+                background-color: $yellow;
+
+            }
+        }
+    }
+
+    &__cta-btn {
+        position: absolute;
+        bottom: 20px;
+        width: 75%;
+        height:60px;
+        margin-top: 10px;
+        background-color: $purple;
+        color: $white;
+        font-family: $font;
+        font-size: 1.2rem;
+        font-weight: bold;
+        transition: all .2s ease-in-out;
+
+        &:focus,
+        &:hover {
+            background-color: $yellow;
+            color: $black;
+        }
+    }
+}
+
+.divider {
+    border-color: $purple !important;
 }

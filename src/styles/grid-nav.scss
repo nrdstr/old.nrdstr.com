@@ -3,6 +3,12 @@
     margin: 20px 0 20px 0;
     min-height: 21px;
 
+    * {
+        &::selection {
+            background-color: $purple;
+        }
+    }
+
     &__btn {
         background: transparent;
         color: white;

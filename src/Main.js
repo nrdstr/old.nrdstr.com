@@ -6,6 +6,7 @@ import Loader from './components/Loader'
 import Contact from './components/Contact'
 import About from './components/About'
 import { useStateValue } from './state'
+import Services from './components/Services'
 import Logo from './components/Logo'
 import Grid from './components/Grid'
 
@@ -177,6 +178,7 @@ const Main = props => {
             })
             props.history.push(`${page}/${tab}`)
         } else {
+            dispatch({ type: 'shapesLoading', payload: { page: page, toggled: true } })
             props.history.push(page)
         }
 
@@ -200,7 +202,7 @@ const Main = props => {
             return (
                 <main style={mainStyles} className={`main main__content color-1`}>
                     <div className={`content color-2`}>
-                        <h1 className='bg--blue desktop'>portfolio</h1>
+                        {/* <h1 className='bg--blue desktop'>portfolio</h1> */}
                         <GridNav type={'portfolio'} tabs={['graphic', 'motion', 'web']} />
                         <Grid type={'portfolio'} data={data.portfolio} />
                     </div>
@@ -210,89 +212,8 @@ const Main = props => {
             return (
                 <main style={mainStyles} className={`main main__content color-3`}>
                     <div className={`content color-1`}>
-                        <h1 className='bg--purple desktop'>services</h1>
-                        <div className='services'>
-                            <div className='services__grid'>
-                                <div className='services__grid-item'>
-                                    <div className='services__grid-item-header'>
-                                        <h3>graphic design</h3>
-                                        <div className='shape__container services__shape'>
-                                            <div className='shape zig-zag color-1' />
-                                            <div className='shape zig-zag color-1' style={{ marginLeft: 3 }} />
-                                        </div>
-                                    </div>
-                                    <div className='services__grid-item-content'>
-                                        <p>itmem</p>
-                                    </div>
-                                </div>
-                                <div className='services__grid-item'>
-                                    <div className='services__grid-item-header'>
-                                        <h3>web site development</h3>
-                                        <div className='shape__container services__shape'>
-                                            <div className='shape zig-zag color-3' />
-                                            <div className='shape zig-zag color-3' style={{ marginLeft: 3 }} />
-                                        </div>
-                                    </div>
-                                    <div className='services__grid-item-content'>
-                                        <p>we want to make your web presence kick ass.</p>
-                                        <p>labels</p>
-                                        <p>agencies</p>
-                                        <p>artists</p>
-                                        <p>producers</p>
-                                    </div>
-                                </div>
-                                <div className='services__grid-item'>
-                                    <div className='services__grid-item-header'>
-                                        <h3>social media kits</h3>
-                                        <div className='shape__container services__shape'>
-                                            <div className='shape zig-zag color-1' />
-                                            <div className='shape zig-zag color-1' style={{ marginLeft: 3 }} />
-                                        </div>
-                                    </div>
-                                    <div className='services__grid-item-content'>
-                                        <p>logos, profile pictures, banners, get it all in one stop.</p>
-                                    </div>
-                                </div>
-
-                                <div className='services__grid-item'>
-                                    <div className='services__grid-item-header'>
-                                        <h3>artist branding</h3>
-                                        <div className='shape__container services__shape'>
-                                            <div className='shape zig-zag color-3' />
-                                            <div className='shape zig-zag color-3' style={{ marginLeft: 3 }} />
-                                        </div>
-                                    </div>
-                                    <div className='services__grid-item-content'>
-                                        <p>unique branding for your artistic project or persona.</p>
-                                    </div>
-                                </div>
-                                <div className='services__grid-item'>
-                                    <div className='services__grid-item-header'>
-                                        <h3>lyric videos</h3>
-                                        <div className='shape__container services__shape'>
-                                            <div className='shape zig-zag color-1' />
-                                            <div className='shape zig-zag color-1' style={{ marginLeft: 3 }} />
-                                        </div>
-                                    </div>
-                                    <div className='services__grid-item-content'>
-                                        <p>itmem</p>
-                                    </div>
-                                </div>
-                                <div className='services__grid-item'>
-                                    <div className='services__grid-item-header'>
-                                        <h3>visualizer videos</h3>
-                                        <div className='shape__container services__shape'>
-                                            <div className='shape zig-zag color-3' />
-                                            <div className='shape zig-zag color-3' style={{ marginLeft: 3 }} />
-                                        </div>
-                                    </div>
-                                    <div className='services__grid-item-content'>
-                                        <p>itmem</p>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
+                        {/* <h1 className='bg--purple desktop'>services</h1> */}
+                        <Services handlePageChange={handlePageChange} />
                     </div>
                 </main>
             )
@@ -300,7 +221,7 @@ const Main = props => {
             return (
                 <main style={mainStyles} className={`main main__content color-4`}>
                     <div className={`content color-3`}>
-                        <h1 className='bg--yellow desktop'>about</h1>
+                        {/* <h1 className='bg--yellow desktop'>about</h1> */}
                         <About handlePageChange={handlePageChange} />
                     </div>
                 </main>
@@ -309,7 +230,7 @@ const Main = props => {
             return (
                 <main style={mainStyles} className={`main main__content main__content--scroll color-2`}>
                     <div className={`content color-3`}>
-                        <h1 style={{ zIndex: 20 }} className='bg--pink desktop'>contact</h1>
+                        {/* <h1 style={{ zIndex: 20 }} className='bg--pink desktop'>contact</h1> */}
                         <Contact />
                     </div>
                 </main>

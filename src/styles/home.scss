@@ -10,6 +10,12 @@
       padding-right: 10px;
     }
 
+    * {
+      &::selection {
+          background-color: $purple;
+      }
+    }
+
     &__description{
       color: white;
       font-family: $font;
