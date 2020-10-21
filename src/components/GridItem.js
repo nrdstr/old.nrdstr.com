@@ -40,7 +40,7 @@ const GridItem = props => {
             <img
                 className='grid__img animate--fade-in-fast'
                 alt='portfolio item'
-                src={props.src} />
+                src={`${props.src}`} />
         </div>
     )
 }

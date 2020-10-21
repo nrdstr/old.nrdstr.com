@@ -50,6 +50,7 @@ const Main = props => {
 
     const getData = async () => {
         const graphic = importAll(require.context('./site-media/site-graphic', false, /\.(png|jpe?g|svg)$/))
+        const graphicSmall = importAll(require.context('./site-media/site-graphic-500', false, /\.(png|jpe?g|svg)$/))
         const web = importAll(require.context('./site-media/site-web', false, /\.(png|jpe?g|svg)$/))
         const webArr = []
         const yt = await getYoutubePlaylist()
@@ -71,6 +72,7 @@ const Main = props => {
                 portfolio: {
                     ...data.portfolio,
                     graphic: graphic,
+                    graphicSmall: graphicSmall,
                     motion: yt.motionGrid,
                     web: web
                 },
