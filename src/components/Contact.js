@@ -92,7 +92,8 @@ const Contact = () => {
                 <div className='contact__info'>
                     <h2>get in touch</h2>
                     <Socials />
-                    <p>ready to move forward on your next project? send us a message and we'll get back to you <strong>asap</strong>. you can reach us directly at <a href='mailto:hello@nrdstr.com' className='link'>hello@nrdstr.com</a> or on any our socials. drop a dm any time!</p>
+                    <p style={{ fontSize: '1.3rem' }}><strong>ready to move forward on your next project?</strong></p>
+                    <p>send us a message and we'll get back to you <strong>asap</strong>. you can reach us directly at <a href='mailto:hello@nrdstr.com' className='link'>hello@nrdstr.com</a> or on any our socials. drop a dm any time!</p>
                 </div>
                 <form className='contact__form' autoComplete="off">
                     <input style={{ border: `3px solid ${msg.name.length > 0 ? 'transparent' : pink}` }} onChange={e => handleUpdateForm(e, 'name')} type='text' className='contact__input' value={msg.name} placeholder='name*' />
