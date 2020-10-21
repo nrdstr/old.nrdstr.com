@@ -9,7 +9,7 @@
 
     @media (max-width: 575.98px) {
         padding: 0;
-        padding-top: 40px;
+        padding-top: 400px;
         overflow: auto;
 
         &::-webkit-scrollbar { width: 0 !important; }
@@ -64,7 +64,7 @@
             text-align: center;
 
             @media (max-width: 575.98px) {
-                font-size: 3rem;
+                font-size: 2.5rem;
             }
         }
 
@@ -75,16 +75,24 @@
             margin: 0 0 7px 0;
             max-width: 500px;
             width: 100%;
+
+            @media (max-width: 575.98px) {
+                font-size: 1rem;
+            }
         }
 
         .link {
             font-size: 1.2rem;
+
+            @media (max-width: 575.98px) {
+                font-size: 1rem;
+            }
         }
     }
 
     &__info {
         @media (max-width: 575.98px) {
-            padding-top: 300px;
+            // padding-top: 300px;
         }
     }
 
