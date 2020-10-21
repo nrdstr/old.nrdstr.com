@@ -19,8 +19,35 @@
     &__description{
       color: white;
       font-family: $font;
+      font-size: 1.2rem;
+      width: 100%;
       max-width: 500px;
       margin: 7px 0 0 0;
+
+      .link {
+        font-size: 1.2rem;
+      }
+    }
+
+    &__cta-btn {
+      background-color: transparent;
+      border: 3px solid $pink;
+      color: white;
+      font-family: $font;
+      max-width: 216px;
+      width: 100%;
+      font-size: 1.2rem;
+      font-weight: bold;
+      padding: 20px;
+      margin: 20px 0 10px 0;
+      transition: all .2s ease-in-out;
+
+      &:focus,
+      &:hover,
+      &:focus-within {
+        background-color: $blue;
+        border-color: $blue;
+      }
     }
 }
 
@@ -33,6 +60,5 @@
 .logo {
   max-width: 500px;
   width: 100%;
-  fill: white;
   z-index: 3;
 }

@@ -4,6 +4,7 @@ import Main from './Main'
 import Background from './components/Background'
 import TopBar from './components/TopBar'
 import Modal from './components/Modal'
+import NoShow from './components/NoShow'
 import Div100vh from 'react-div-100vh'
 import MobileMenu from './components/MobileMenu'
 import './App.scss'
@@ -22,6 +23,7 @@ function App() {
           <MobileMenu />
         </div>
       </Router>
+      <NoShow />
     </Div100vh>
   )
 }

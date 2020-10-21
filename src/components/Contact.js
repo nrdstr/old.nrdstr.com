@@ -85,16 +85,16 @@ const Contact = () => {
 
     return (
         <div className='contact animate--fade-in'>
-            <div className='contact__split animate--fade-in'>
+            <div className='contact__split'>
                 <NrdstrContactIcon success={messageSuccess} />
             </div>
             <div className='contact__container'>
                 <div className='contact__info'>
                     <h2>get in touch</h2>
                     <Socials />
-                    <p>ready to move forward on your next project? just want to say hi? send us a message and we'll get back to you <strong>asap</strong>. you can reach us directly at <a href='mailto:hello@nrdstr.com' className='link'>hello@nrdstr.com</a> or on any our socials. drop a dm any time!</p>
+                    <p>ready to move forward on your next project? send us a message and we'll get back to you <strong>asap</strong>. you can reach us directly at <a href='mailto:hello@nrdstr.com' className='link'>hello@nrdstr.com</a> or on any our socials. drop a dm any time!</p>
                 </div>
-                <form className='contact__form'>
+                <form className='contact__form' autoComplete="off">
                     <input style={{ border: `3px solid ${msg.name.length > 0 ? 'transparent' : pink}` }} onChange={e => handleUpdateForm(e, 'name')} type='text' className='contact__input' value={msg.name} placeholder='name*' />
                     <input style={{ border: `3px solid ${((msg.email.length > 0) && emailIsValidated) ? 'transparent' : pink}` }} onChange={e => handleUpdateForm(e, 'email')} type='email' className='contact__input' value={msg.email} placeholder='email*' />
                     <input onChange={e => handleUpdateForm(e, 'subject')} type='text' className='contact__input' value={msg.subject} placeholder='subject' />

@@ -134,17 +134,21 @@
     &__web {
         @include flex(column, flex-start, flex-start);
         @include size(100%, 100%);
+
+        @media (max-width: 768px) {
+            padding: 20px 20px 0 20px;
+        }
     }
 
     &__web-link {
         font-family: $font;
         color: $black;
-        font-size: 1.3rem;
+        font-size: 1.5rem;
         padding: 5px;
         background-color: $blue;
         margin: 20px 0 0 0;
         font-weight: bold;
-        transform: rotate(3deg) scale(1);
+        transform: rotate(2deg) scale(1);
         text-decoration: none;
         transition: .2s all ease-in-out;
 
@@ -167,7 +171,7 @@
     &__web-description {
         font-family: $font;
         color: $white;
-        font-size: 0.9rem;
+        font-size: 1.2rem;
         text-transform: lowercase;
         margin: 0;
         margin-bottom: 40px;
@@ -181,11 +185,16 @@
 
     &__web-tag {
         color: $white;
-        font-size: 0.8rem;
+        font-size: 0.9rem;
         font-family: $font;
+        font-weight: bold;
         padding: 5px;
         background: $purple;
         margin: 0 3px;
+
+        &:first-child {
+            margin-left: 0;
+        }
     }
 }
 

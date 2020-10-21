@@ -1,7 +1,7 @@
 import React from 'react'
 import { useStateValue } from '../state'
 import { withRouter } from 'react-router-dom'
-import { NrdstrIcon } from '../icons/icons'
+import { NrdstrIcon, ExpandIcon } from '../icons/icons'
 import 'react-lazy-load-image-component/src/effects/blur.css'
 
 const GridItem = props => {
@@ -30,12 +30,14 @@ const GridItem = props => {
     }
 
     return (
-        <div className={`grid-item grid-item--${props.tab}`}>
+        <div className={`grid-item grid-item--${props.tab}`} onClick={handleClick}>
             <div className='grid-item__placeholder'>
                 <NrdstrIcon />
             </div>
+            <div className='grid-item__hover'>
+                <ExpandIcon />
+            </div>
             <img
-                onClick={handleClick}
                 className='grid__img animate--fade-in-fast'
                 alt='portfolio item'
                 src={props.src} />

@@ -1,7 +1,7 @@
 .about {
     @include flex(column, center, center);
     @include size(100%, 100%);
-    padding-bottom: 80px;
+    // padding-bottom: 80px;
 
     @media (max-width: 575.98px) {
       padding-bottom: 0;
@@ -18,21 +18,31 @@
       color: $black;
       font-family: $font;
       font-weight: bold;
+      font-size: 4rem;
       text-align: left;
       text-align: center;
       transform: rotate(1deg);
-      margin: 7px 0;
+      margin: 7px 0 15px 0;
 
       @media (max-width: 575.98px) {
         margin-bottom: 15px;
       }
     }
 
+    &__logo {
+      // margin: 15px 0;
+      max-width: 300px;
+    }
+
     &__description {
-      max-width: 500px;
+      max-width: 700px;
       color: $white;
-      font-size: 1.1rem;
+      font-size: 1.2rem;
       font-family: $font;
+
+      .link {
+        font-size: 1.2rem;
+      }
 
       p {
         margin: 0;
@@ -47,19 +57,17 @@
   .link {
     font-family: $font;
     font-weight: bold;
-    color: $pink;
+    color: $blue;
     font-size: 1rem;
     outline: 0;
     padding: 0;
     margin: 0;
-    border-bottom: 2px solid transparent;
     cursor: pointer;
     transition: .2s all ease-in-out;
 
     &:focus,
     &:hover,
     &:active {
-      color: $blue;
-      border-bottom-color: $blue;
+      color: $pink;
     }
   }

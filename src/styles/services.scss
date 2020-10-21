@@ -68,7 +68,7 @@
 
             .services__cta-btn {
                 background-color: $blue;
-                color: $black;
+                // color: $black;
 
                 &:focus,
                 &:hover {
@@ -79,7 +79,7 @@
     }
 
     &__grid-item-header {
-        @include size(100%, 100px);
+        @include size(100%, 83px);
         background-color: transparent;
         @include flex(column, center, center);
         position: relative;
@@ -115,6 +115,7 @@
             font-family: $font;
             font-size: 1rem;
             color: $white;
+            margin-top: 0;
             text-align: center;
             margin-bottom: 7px;
             max-width: 318px;

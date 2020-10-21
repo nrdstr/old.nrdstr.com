@@ -9,6 +9,7 @@ import { useStateValue } from './state'
 import Services from './components/Services'
 import Logo from './components/Logo'
 import Grid from './components/Grid'
+import Footer from './components/Footer'
 
 const Main = props => {
     const [{ page, data, toggle, loading, shapesLoading }, dispatch] = useStateValue()
@@ -56,9 +57,9 @@ const Main = props => {
         const webData = {
             name: 'wigb',
             url: 'wigb.space',
-            tags: ['new site', 'artist'],
+            tags: ['new site', 'artist', 'music'],
             src: web[0],
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.'
+            description: 'wigb is an electronic music producer from florida. we built this site to use a simple landing page with particles.js, with a shop link that leads to a custom store built on wordpress. check out his sweet website and killer music today!'
         }
 
         webArr.push(webData)
@@ -190,12 +191,20 @@ const Main = props => {
             return (
                 <main ref={main} style={mainStyles} className={`main main__content main__home`}>
                     <div ref={home} style={homeStyles} className={`home`}>
-                        <Logo />
+                        <Logo color={'#fefefe'} />
                         <p className='home__description animate--fade-in'>
-                            a <strong>multimedia design</strong> collective. driven by the world of music, entertainment, and culture.
-                        </p>
+                            we are a <strong>digital design</strong> agency that delivers graphic design, web design and development, advertising design, and many more <button className='link' onClick={() => handlePageChange('services')}>services</button>.
+                            </p>
+                        {/* <p className='home__description animate--fade-in'>
+                            contact us <strong>today</strong> to discuss your next web, creative, or marketing project.
+                            at <strong>nrdstr</strong>, we are heavily driven by the world of music, film, and entertainment.
+                        </p> */}
+                        <button className='home__cta-btn' onClick={() => handlePageChange('contact')} title='see our available services'>
+                            get a quote
+                        </button>
                         <Socials />
                     </div>
+                    <Footer />
                 </main>
             )
         } else if (page === 'portfolio') {
@@ -224,6 +233,7 @@ const Main = props => {
                         {/* <h1 className='bg--yellow desktop'>about</h1> */}
                         <About handlePageChange={handlePageChange} />
                     </div>
+                    <Footer />
                 </main>
             )
         } else if (page === 'contact') {

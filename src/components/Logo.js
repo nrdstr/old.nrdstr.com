@@ -1,9 +1,9 @@
 import React from 'react'
 
-const Logo = () => {
+const Logo = props => {
     return (
         <div className='logo__container animate--fade-in'>
-            <svg className='logo' id="nrdstr." xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1755.53 528.27">
+            <svg fill={props.color} className='logo' id="nrdstr." xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1755.53 528.27">
                 <g id="full_logo" dataname="full logo">
                     <g id="nrdstr._white" dataname="nrdstr. white">
                         <g id="_." dataname=".">

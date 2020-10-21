@@ -18,4 +18,31 @@
             opacity: .4;
         }
     }
+
+    &__hover {
+        position: absolute;
+        top: 0;
+        @include size(100%, 100%);
+        @include flex(column, center, center);
+        background: transparentize($purple, 0.4);
+        z-index: 8000;
+        opacity: 0;
+        cursor: pointer;
+        transition: all .2s ease-in-out;
+
+    }
+
+    @media (min-width: 768px) {
+        &:focus,
+        &:hover {
+            .grid-item__hover {
+                opacity: 1;
+            }
+        }
+    }
+}
+
+.icon__expand {
+    @include size(50px, 50px);
+    fill: $white;
 }

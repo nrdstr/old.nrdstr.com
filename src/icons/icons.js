@@ -23,3 +23,15 @@ export const NrdstrContactIcon = props => {
         )
     }
 }
+
+export const ExternalLink = () => {
+    return (
+        <svg className='icon__external' version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" width="16" height="16" viewBox="0 0 16 16">
+            <path fill="#151515" d="M14 16v-11l-1 1v9h-12v-12h9l1-1h-11v14z"></path>
+            <path fill="#151515" d="M16 0h-5l1.8 1.8-6.8 6.8 1.4 1.4 6.8-6.8 1.8 1.8z"></path>
+        </svg>
+
+    )
+}
+
+export const ExpandIcon = () => <svg className='icon__expand' id="Capa_1" enableBackground="new 0 0 451.111 451.111" height="512" viewBox="0 0 451.111 451.111" width="512" xmlns="http://www.w3.org/2000/svg"><path d="m290 0 56.389 56.389-88.611 88.611 48.333 48.333 88.611-88.611 56.389 56.389v-161.111z" /><path d="m145 257.778-88.611 88.611-56.389-56.389v161.111h161.111l-56.389-56.389 88.611-88.611z" /><path d="m306.111 257.778-48.333 48.333 88.611 88.611-56.389 56.389h161.111v-161.111l-56.389 56.389z" /><path d="m161.111 0h-161.111v161.111l56.389-56.389 88.611 88.611 48.333-48.333-88.611-88.611z" /></svg>

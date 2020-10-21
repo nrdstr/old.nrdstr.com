@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useStateValue } from '../state'
 import YouTube from 'react-youtube-embed'
 import { withRouter } from 'react-router-dom'
+import { ExternalLink } from '../icons/icons'
 
 const Modal = props => {
     const [{ toggle, page, data }, dispatch] = useStateValue()
@@ -104,7 +105,7 @@ const Modal = props => {
                     </div>
                     <div className='column'>
                         <a className='modal__web-link' href={`https://${webData.url}`} title={`https://${webData.url}`}>
-                            {webData.url}
+                            {webData.url} <ExternalLink />
                         </a>
                     </div>
                     <div className='modal__web-tags'>
@@ -158,16 +159,16 @@ const Modal = props => {
                 <button onClick={handleCloseModal} className='modal__close' />
             </div>
             <div className='modal__inner'>
-                <div className='modal__btn-container modal__btn-container--full'>
+                <div className={`modal__btn-container modal__btn-container--full ${toggle.modal.tab === 'web' ? 'hide' : ''}`}>
                     <button onClick={handlePrevious} className='modal__btn modal__btn--prev' />
                 </div>
                 <div className='modal__content-container'>
                     {content}
                 </div>
-                <div className='modal__btn-container modal__btn-container--full flex-end'>
+                <div className={`modal__btn-container modal__btn-container--full flex-end ${toggle.modal.tab === 'web' ? 'hide' : ''}`}>
                     <button onClick={handleNext} className='modal__btn' />
                 </div>
-                <div className='modal__mobile-btns'>
+                <div className={`modal__mobile-btns ${toggle.modal.tab === 'web' ? 'remove' : ''}`}>
                     <div className='modal__btn-container'>
                         <button onClick={handlePrevious} className='modal__btn modal__btn--prev' />
                     </div>
