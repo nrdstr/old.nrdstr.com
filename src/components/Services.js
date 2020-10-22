@@ -16,10 +16,10 @@ const Services = props => {
                     <div className='services__grid-item-content'>
                         <p>a unique design for <strong>any</strong>&nbsp;project.</p>
                         <ul className='services__content'>
-                            <li>logos</li>
-                            <li>branding</li>
-                            <li>custom packaging</li>
-                            <li><strong>plenty</strong>&nbsp;more.</li>
+                            <li>logos and branding</li>
+                            <li>packaging and labels</li>
+                            <li>album and mixtape design</li>
+                            <li>social media design</li>
                         </ul>
                         <button onClick={() => props.handlePageChange('contact')} className='services__cta-btn'>
                             get started
@@ -51,6 +51,28 @@ const Services = props => {
 
                 <div className='services__grid-item'>
                     <div className='services__grid-item-header'>
+                        <h3>website maintenance</h3>
+                        <div className='shape__container services__shape'>
+                            <div className='shape zig-zag divider' />
+                            <div className='shape zig-zag divider' style={{ marginLeft: 3 }} />
+                        </div>
+                    </div>
+                    <div className='services__grid-item-content'>
+                        <p>ensuring your website <strong>remains</strong> updated, optimized, and secure.</p>
+                        <ul className='services__content'>
+                            <li>content updates</li>
+                            <li><strong>secure</strong>&nbsp;backups</li>
+                            <li>website monitoring</li>
+                            <li>website hosting</li>
+                        </ul>
+                        <button onClick={() => props.handlePageChange('contact')} className='services__cta-btn'>
+                            get started
+                        </button>
+                    </div>
+                </div>
+
+                <div className='services__grid-item'>
+                    <div className='services__grid-item-header'>
                         <h3>social media design</h3>
                         <div className='shape__container services__shape'>
                             <div className='shape zig-zag divider' />
@@ -60,9 +82,9 @@ const Services = props => {
                     <div className='services__grid-item-content'>
                         <p><strong>level up</strong>&nbsp;with a design aesthetic that spans across your social web.</p>
                         <ul className='services__content'>
-                            <li>banners</li>
-                            <li>custom posts</li>
+                            <li>covers and banners</li>
                             <li>profile pictures</li>
+                            <li>custom posts</li>
                             <li>advertisements</li>
                         </ul>
                         <button onClick={() => props.handlePageChange('contact')} className='services__cta-btn'>
@@ -71,7 +93,7 @@ const Services = props => {
                     </div>
                 </div>
 
-                <div className='services__grid-item'>
+                {/* <div className='services__grid-item'>
                     <div className='services__grid-item-header'>
                         <h3>artist branding</h3>
                         <div className='shape__container services__shape'>
@@ -91,7 +113,7 @@ const Services = props => {
                             get started
                         </button>
                     </div>
-                </div>
+                </div> */}
 
 
 
@@ -106,10 +128,10 @@ const Services = props => {
                     <div className='services__grid-item-content'>
                         <p>solidify your digital presence with our <strong>hand tailored</strong>&nbsp;videos.</p>
                         <ul className='services__content'>
-                            <li>visualizer videos</li>
+                            <li>visualizer and lyric videos</li>
                             <li>custom instagram stories</li>
                             <li>music videos</li>
-                            <li><strong>plenty</strong>&nbsp;more</li>
+                            <li>advertisements</li>
                         </ul>
                         <button onClick={() => props.handlePageChange('contact')} className='services__cta-btn'>
                             get started
