@@ -61,7 +61,7 @@ const Services = props => {
                         <p>ensuring your website <strong>remains</strong> updated, optimized, and secure.</p>
                         <ul className='services__content'>
                             <li>content updates</li>
-                            <li><strong>secure</strong>&nbsp;backups</li>
+                            <li><strong>wordpress</strong>&nbsp;maintenance</li>
                             <li>website monitoring</li>
                             <li>website hosting</li>
                         </ul>

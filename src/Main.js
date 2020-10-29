@@ -51,19 +51,25 @@ const Main = props => {
     const getData = async () => {
         const graphic = importAll(require.context('./site-media/site-graphic', false, /\.(png|jpe?g|svg)$/))
         const graphicSmall = importAll(require.context('./site-media/site-graphic-500', false, /\.(png|jpe?g|svg)$/))
-        const web = importAll(require.context('./site-media/site-web', false, /\.(png|jpe?g|svg)$/))
-        const webArr = []
         const yt = await getYoutubePlaylist()
 
-        const webData = {
-            name: 'wigb',
-            url: 'wigb.space',
-            tags: ['new site', 'artist', 'music'],
-            src: web[0],
-            description: 'wigb is an electronic music producer from florida. we built this site to use a simple landing page with particles.js, with a shop link that leads to a custom store built on wordpress. check out his sweet website and killer music today!'
-        }
+        const webData = [
+            {
+                name: 'cleveland clock repair',
+                url: 'clevelandclockrepair.com',
+                tags: ['re-design', 'small business', 'reactjs'],
+                src: '/site-web/clevelandclockrepair.png',
+                description: 'cleveland clock repair performs clock servicing and repairs to clients in the greater cleveland, ohio area. this was a fun build and the folks at cleveland are beyond excited! we used <strong>gatsby</strong> and <strong>reactjs</strong> to make this site super fast, snappy, and SEO strong.'
+            },
+            {
+                name: 'wigb',
+                url: 'wigb.space',
+                tags: ['new site', 'artist', 'music'],
+                src: '/site-web/wigb.png',
+                description: 'wigb is an electronic music producer from florida. we built this site to use a simple landing page with particles.js, with a shop link that leads to a custom store built on wordpress. check out his sweet website and killer music today!'
+            }
 
-        webArr.push(webData)
+        ]
 
         dispatch({
             type: 'data',
@@ -74,10 +80,10 @@ const Main = props => {
                     graphic: graphic,
                     graphicSmall: graphicSmall,
                     motion: yt.motionGrid,
-                    web: web
+                    web: webData
                 },
                 motion: yt.motionVids,
-                web: webArr
+                web: webData
             }
         })
 

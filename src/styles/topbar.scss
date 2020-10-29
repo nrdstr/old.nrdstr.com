@@ -12,10 +12,6 @@
     align-items: center;
     z-index: 2;
 
-    // @media (max-width: 575.98px) {
-    //     background-color: transparentize($black, .5);
-    // }
-
     &__inner {
         width: 100%;
         max-width: 1400px;
@@ -27,8 +23,6 @@
         align-items: center;
     }
 }
-
-
 
 
 .mobile-menu-btn {
@@ -55,12 +49,10 @@
 
         &--active {
             &:first-child {
-                // top: 0;
                 transform: rotate(45deg);
             }
 
             &:last-child {
-                // bottom: 0;
                 transform: rotate(-45deg);
             }
         }

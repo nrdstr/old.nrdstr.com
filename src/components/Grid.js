@@ -7,15 +7,25 @@ const Grid = props => {
     const currentTab = toggle[props.type].current
 
     if (props.data[currentTab]) {
+        const d = props.data[currentTab]
         return (
             <div className={`grid grid--${currentTab} animate--fade-in`}>
-                { props.data[currentTab].map((item, i) => {
-                    return <GridItem key={item}
-                        src={props.data[currentTab] === 'web' ? item.src : item}
-                        type={props.type}
-                        index={i}
-                        id={item}
-                        tab={currentTab} />
+                { d.map((item, i) => {
+                    if (currentTab === 'web') {
+                        return <GridItem key={i}
+                            src={item.src}
+                            type={props.type}
+                            index={i}
+                            id={item.src}
+                            tab={currentTab} />
+                    } else {
+                        return <GridItem key={i}
+                            src={item}
+                            type={props.type}
+                            index={i}
+                            id={item}
+                            tab={currentTab} />
+                    }
                 })}
             </div>
         )

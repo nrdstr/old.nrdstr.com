@@ -2,10 +2,6 @@ import React from 'react'
 
 const Card = props => {
 
-    const data = {
-
-    }
-
     return (
         <div className='services__grid-item'>
             <div className='services__grid-item-header'>
@@ -25,7 +21,7 @@ const Card = props => {
                 </ul>
                 <button onClick={() => props.handlePageChange('contact')} className='services__cta-btn'>
                     get started
-                                        </button>
+                </button>
             </div>
         </div>
     )

@@ -93,7 +93,6 @@ const Modal = props => {
     const Web = () => {
         const { web } = data
         const webData = web[toggle.modal.index]
-        console.log(webData)
         return (
             <>
                 <div className='modal__web'>
@@ -113,7 +112,7 @@ const Modal = props => {
                             return <p key={tag} className='modal__web-tag'>{tag}</p>
                         })}
                     </div>
-                    <p className='modal__web-description'>{webData.description}</p>
+                    <p className='modal__web-description' dangerouslySetInnerHTML={{ __html: webData.description }}></p>
                 </div>
             </>
         )

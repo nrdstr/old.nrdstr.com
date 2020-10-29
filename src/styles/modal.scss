@@ -134,6 +134,22 @@
     &__web {
         @include flex(column, flex-start, flex-start);
         @include size(100%, 100%);
+        overflow-y: auto;
+        overflow-x: hidden;
+
+        &::-webkit-scrollbar { width: 0.7rem !important }
+
+        &::-webkit-scrollbar-track {
+            background-color: lighten($black, 5%);
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background-color: $blue;
+        }
+
+        @media (max-width: 575.98px) {
+            &::-webkit-scrollbar { width: 0 !important; opacity: 0; }
+        }
 
         @media (max-width: 768px) {
             padding: 20px 20px 0 20px;
@@ -143,12 +159,12 @@
     &__web-link {
         font-family: $font;
         color: $black;
-        font-size: 1.5rem;
+        font-size: 2rem;
         padding: 5px;
         background-color: $blue;
         margin: 20px 0 0 0;
         font-weight: bold;
-        transform: rotate(2deg);
+        transform: rotate(1deg);
         text-decoration: none;
         transition: .2s all ease-in-out;
 
@@ -158,18 +174,25 @@
         }
 
         @media (max-width: 575.98px) {
-
+            font-size: 6vw;
         }
     }
 
     &__web-image-container {
         @include size(100%, 100%);
+        // width: 100%;
         @include flex(row, center, center);
     }
 
     &__web-image {
         @include size(100%, 100%);
         object-fit: cover;
+
+        @media (max-width: 575.98px) {
+            width: auto;
+            height: 100%;
+            max-width: 100%;
+        }
     }
 
     &__web-description {
@@ -177,6 +200,7 @@
         color: $white;
         font-size: 1.2rem;
         text-transform: lowercase;
+        padding-right: 5px;
         margin: 0;
         margin-bottom: 40px;
 
