@@ -41,6 +41,8 @@ const GridItem = props => {
             <LazyLoadImage
                 className='grid__img animate--fade-in-fast'
                 alt={'portfolio item'}
+                // placeholderSrc={props.src}
+                // effect="blur"
                 src={props.src} />
             {/* <img
                 className='grid__img animate--fade-in-fast'
