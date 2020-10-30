@@ -11,7 +11,7 @@ const Seo = ({ title, description, meta }) => {
                 lang: `en`,
             }}
             title={title ? title : `graphic design, web design, web maintenance, and more`}
-            titleTemplate={title ? `%s | 'nrdstr digital design and development'` : null}
+            titleTemplate={title ? `%s | nrdstr digital design and development` : null}
             meta={[
                 {
                     name: `description`,
