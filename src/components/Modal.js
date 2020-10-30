@@ -93,26 +93,28 @@ const Modal = props => {
     const Web = () => {
         const { web } = data
         const webData = web[toggle.modal.index]
+        const img = `/site-web/full/${webData.name.replaceAll(' ', '')}.png`
+        console.log(img)
         return (
             <>
-                <div className='modal__web'>
+                <div className='modal__web animate--fade-in'>
                     <div className='modal__web-image-container'>
                         <img
                             className='modal__web-image animate--fade-in-fast'
-                            alt={webData.url}
-                            src={webData.src} />
+                            alt={webData.name}
+                            src={img} />
                     </div>
-                    <div className='column'>
+                    <div className='column modal__web-container'>
                         <a className='modal__web-link' href={`https://${webData.url}`} title={`https://${webData.url}`}>
                             {webData.url} <ExternalLink />
                         </a>
+                        <div className='modal__web-tags'>
+                            {webData.tags.map(tag => {
+                                return <p key={tag} className='modal__web-tag'>{tag}</p>
+                            })}
+                        </div>
+                        <p className='modal__web-description' dangerouslySetInnerHTML={{ __html: webData.description }}></p>
                     </div>
-                    <div className='modal__web-tags'>
-                        {webData.tags.map(tag => {
-                            return <p key={tag} className='modal__web-tag'>{tag}</p>
-                        })}
-                    </div>
-                    <p className='modal__web-description' dangerouslySetInnerHTML={{ __html: webData.description }}></p>
                 </div>
             </>
         )

@@ -11,7 +11,7 @@
 
     &__placeholder {
         @include flex(column, center, center);
-        @include size(100%, 100%);
+        @include size(100%, 446px);
         position: absolute;
         top: 0;
         left: 0;
