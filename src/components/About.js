@@ -7,7 +7,7 @@ const About = props => {
     return (
         <div className='about animate--fade-in'>
             <div className='about__description'>
-                <h2 className='about__title bg--pink'><Logo color={'#151515'} /></h2>
+                <h2 className='about__title'><Logo color={'#151515'} /></h2>
                 <p>
                     we are a group of graphic, ui, and web designers based in the united states offering services ranging from <button className='link' onClick={() => props.handlePageChange('portfolio', 'graphic')}> logo design</button> to <button className='link' onClick={() => props.handlePageChange('portfolio', 'web')}>website development</button>. we enjoy good challenges to help push our creative limits further every day.
                                 </p>

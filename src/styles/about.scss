@@ -17,6 +17,9 @@
       padding: 10px 15px;
       color: $black;
       font-family: $font;
+      background: linear-gradient(45deg, $pink, $purple);
+      background-size: 400% 400%;
+      animation: gradient 15s ease infinite;
       font-weight: bold;
       font-size: 4rem;
       text-align: left;
@@ -26,6 +29,18 @@
 
       @media (max-width: 575.98px) {
         margin-bottom: 15px;
+      }
+    }
+
+    @keyframes gradient {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
       }
     }
 
