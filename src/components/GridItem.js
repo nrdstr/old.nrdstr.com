@@ -2,6 +2,7 @@ import React from 'react'
 import { useStateValue } from '../state'
 import { withRouter } from 'react-router-dom'
 import { NrdstrIcon, ExpandIcon } from '../icons/icons'
+import { LazyLoadImage } from 'react-lazy-load-image-component'
 import 'react-lazy-load-image-component/src/effects/blur.css'
 
 const GridItem = props => {
@@ -37,10 +38,14 @@ const GridItem = props => {
             <div className='grid-item__hover'>
                 <ExpandIcon />
             </div>
-            <img
+            <LazyLoadImage
+                className='grid__img animate--fade-in-fast'
+                alt={'portfolio item'}
+                src={props.src} />
+            {/* <img
                 className='grid__img animate--fade-in-fast'
                 alt='portfolio item'
-                src={`${props.src}`} />
+                src={`${props.src}`} /> */}
         </div>
     )
 }
