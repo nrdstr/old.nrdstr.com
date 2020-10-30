@@ -10,6 +10,7 @@ import Services from './components/Services'
 import Logo from './components/Logo'
 import Grid from './components/Grid'
 import Footer from './components/Footer'
+import Seo from "./components/seo"
 
 const Main = props => {
     const [{ page, data, toggle, loading, shapesLoading }, dispatch] = useStateValue()
@@ -54,6 +55,13 @@ const Main = props => {
         const yt = await getYoutubePlaylist()
 
         const webData = [
+            {
+                name: 'drafty',
+                url: 'drafty.cc',
+                tags: ['webapp', 'custom', 'reactjs', 'twitter'],
+                src: '/site-web/drafty.png',
+                description: 'drafty is a web app designed to help you write and store short-form content such as tweets. this webapp was created for a twitter user looking to expand on twitter\'s post draft functionality. <br /><br />drafty was built using modern tooling such as <strong>reactjs</strong>,<strong> sass</strong>, and <strong>google firebase</strong>.'
+            },
             {
                 name: 'cleveland clock repair',
                 url: 'clevelandclockrepair.com',
@@ -194,10 +202,13 @@ const Main = props => {
     }
 
 
+
+
     if (!loading) {
         if (page === 'home') {
             return (
                 <main ref={main} style={mainStyles} className={`main main__content main__home`}>
+                    <Seo title='graphic design, web design and development, web maintenance, and more' />
                     <div ref={home} style={homeStyles} className={`home`}>
                         <Logo color={'#fefefe'} />
                         <p className='home__description animate--fade-in'>
@@ -218,6 +229,7 @@ const Main = props => {
         } else if (page === 'portfolio') {
             return (
                 <main style={mainStyles} className={`main main__content color-1`}>
+                    <Seo title='digital design portfolio' description="Check out our portfolio of work with graphic design, web design and development, and motion design. Contact us today to discuss your next web, creative, or marketing project!" />
                     <div className={`content color-2`}>
                         {/* <h1 className='bg--blue desktop'>portfolio</h1> */}
                         <GridNav type={'portfolio'} tabs={['graphic', 'motion', 'web']} />
@@ -228,6 +240,7 @@ const Main = props => {
         } else if (page === 'services') {
             return (
                 <main style={mainStyles} className={`main main__content color-3`}>
+                    <Seo title='our digital services' description="We offer a plethora of digital services, such as web design and development, graphic design, website maintenance and hosting, youtube videos, social media, design, and much more. Contact us today to discuss your next web, creative, or marketing project!" />
                     <div className={`content color-1`}>
                         {/* <h1 className='bg--purple desktop'>services</h1> */}
                         <Services handlePageChange={handlePageChange} />
@@ -237,8 +250,8 @@ const Main = props => {
         } else if (page === 'about') {
             return (
                 <main style={mainStyles} className={`main main__content color-4`}>
+                    <Seo title='the nrdstr story' description="We are a group of graphic, ui, and web designers based in the united states offering services ranging from logo design to website development. Contact us today to discuss your next web, creative, or marketing project!" />
                     <div className={`content color-3`}>
-                        {/* <h1 className='bg--yellow desktop'>about</h1> */}
                         <About handlePageChange={handlePageChange} />
                     </div>
                     <Footer />
@@ -247,8 +260,8 @@ const Main = props => {
         } else if (page === 'contact') {
             return (
                 <main style={mainStyles} className={`main main__content main__content--scroll color-2`}>
+                    <Seo title='contact us' description="Ready to move forward on your next digital project? We offer graphic design services, web design services, and so much more. Let's make your next project a nrdstr project. Contact us today!" />
                     <div className={`content color-3`}>
-                        {/* <h1 style={{ zIndex: 20 }} className='bg--pink desktop'>contact</h1> */}
                         <Contact />
                     </div>
                 </main>
